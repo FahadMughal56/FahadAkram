@@ -27,6 +27,12 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 1.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            overflow-x: auto;
         }
         .scraping-animation::before {
             content: '';
@@ -46,7 +52,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(transparent, rgba(59, 130, 246, 0.2), transparent);
-            animation: scrape 2.5s linear infinite;
+            animation: scrape 3s linear infinite;
             z-index: 2;
         }
         @keyframes scrape {
@@ -128,9 +134,95 @@
                 left: 18px;
             }
             .scraping-animation {
-                max-width: 100%;
-                overflow-x: auto;
+                font-size: 0.75rem;
+                padding: 1rem;
+                min-width: 320px;
             }
+            .scraping-animation::after {
+                animation-duration: 4s;
+            }
+        }
+        .code-keyword {
+            color: #c792ea;
+        }
+        .code-string {
+            color: #c3e88d;
+        }
+        .code-variable {
+            color: #82aaff;
+        }
+        .code-function {
+            color: #82aaff;
+        }
+        .code-operator {
+            color: #89ddff;
+        }
+        .code-comment {
+            color: #546e7a;
+        }
+        .code-number {
+            color: #f78c6c;
+        }
+        .code-builtin {
+            color: #ffcb6b;
+        }
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        .terminal-dots {
+            display: flex;
+        }
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .terminal-title {
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+        .terminal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #334155;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+        .terminal-status {
+            display: flex;
+            align-items: center;
+        }
+        .terminal-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #10b981;
+            margin-right: 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .code-line {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .code-indent {
+            margin-left: 1rem;
         }
     </style>
 </head>
@@ -162,114 +254,124 @@
                 </a>
             </div>
 
-            <!-- Enhanced Web Scraping Animation -->
-            <div class="mt-16 mx-auto max-w-2xl">
-                <div class="scraping-animation bg-white p-6 sm:p-8 rounded-xl relative overflow-hidden">
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center">
-                                <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <div class="text-sm text-slate-500 font-medium">scraper.py</div>
+             <!-- Enhanced Web Scraping Animation -->
+            <div class="mt-16 mx-auto max-w-2xl w-full">
+                <div class="scraping-animation">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
                         </div>
-                        <div class="space-y-4 text-left font-mono text-sm">
-                            <div class="flex items-center">
-                                <span class="text-purple-600 mr-2">import</span>
-                                <span class="text-blue-600">requests</span>
-                                <span class="text-purple-600 ml-4 mr-2">from</span>
-                                <span class="text-blue-600">bs4</span>
-                                <span class="text-purple-600 mr-2">import</span>
-                                <span class="text-blue-600">BeautifulSoup</span>
-                            </div>
-                            <div class="h-px bg-slate-200"></div>
-                            <div class="flex">
-                                <span class="text-blue-600">url</span>
-                                <span class="text-slate-800 mx-2">=</span>
-                                <span class="text-emerald-600">"https://example.com/products"</span>
-                            </div>
-                            <div class="flex">
-                                <span class="text-blue-600">response</span>
-                                <span class="text-slate-800 mx-2">=</span>
-                                <span class="text-blue-600">requests</span>
-                                <span class="text-slate-800">.</span>
-                                <span class="text-blue-600">get</span>
-                                <span class="text-slate-800">(</span>
-                                <span class="text-blue-600">url</span>
-                                <span class="text-slate-800">)</span>
-                            </div>
-                            <div class="flex">
-                                <span class="text-blue-600">soup</span>
-                                <span class="text-slate-800 mx-2">=</span>
-                                <span class="text-blue-600">BeautifulSoup</span>
-                                <span class="text-slate-800">(</span>
-                                <span class="text-blue-600">response</span>
-                                <span class="text-slate-800">.</span>
-                                <span class="text-blue-600">text</span>
-                                <span class="text-slate-800">,</span>
-                                <span class="text-emerald-600 ml-2">'html.parser'</span>
-                                <span class="text-slate-800">)</span>
-                            </div>
-                            <div class="h-px bg-slate-200"></div>
-                            <div class="data-highlight">
-                                <div class="flex">
-                                    <span class="text-blue-600">products</span>
-                                    <span class="text-slate-800 mx-2">=</span>
-                                    <span class="text-blue-600">soup</span>
-                                    <span class="text-slate-800">.</span>
-                                    <span class="text-blue-600">find_all</span>
-                                    <span class="text-slate-800">(</span>
-                                    <span class="text-emerald-600">'div'</span>
-                                    <span class="text-slate-800">,</span>
-                                    <span class="text-blue-600 ml-2">class_</span>
-                                    <span class="text-slate-800">=</span>
-                                    <span class="text-emerald-600">'product'</span>
-                                    <span class="text-slate-800">)</span>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <span class="text-purple-600">for</span>
-                                <span class="text-blue-600 ml-2">product</span>
-                                <span class="text-purple-600 mr-2">in</span>
-                                <span class="text-blue-600">products</span>
-                                <span class="text-slate-800">:</span>
-                            </div>
-                            <div class="ml-4">
-                                <div class="flex">
-                                    <span class="text-blue-600">title</span>
-                                    <span class="text-slate-800 mx-2">=</span>
-                                    <span class="text-blue-600">product</span>
-                                    <span class="text-slate-800">.</span>
-                                    <span class="text-blue-600">find</span>
-                                    <span class="text-slate-800">(</span>
-                                    <span class="text-emerald-600">'h2'</span>
-                                    <span class="text-slate-800">).</span>
-                                    <span class="text-blue-600">text</span>
-                                </div>
-                                <div class="flex mt-2">
-                                    <span class="text-blue-600">price</span>
-                                    <span class="text-slate-800 mx-2">=</span>
-                                    <span class="text-blue-600">product</span>
-                                    <span class="text-slate-800">.</span>
-                                    <span class="text-blue-600">find</span>
-                                    <span class="text-slate-800">(</span>
-                                    <span class="text-emerald-600">'span'</span>
-                                    <span class="text-slate-800">,</span>
-                                    <span class="text-blue-600 ml-2">class_</span>
-                                    <span class="text-slate-800">=</span>
-                                    <span class="text-emerald-600">'price'</span>
-                                    <span class="text-slate-800">).</span>
-                                    <span class="text-blue-600">text</span>
-                                </div>
+                        <div class="terminal-title">scraper.py</div>
+                    </div>
+
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="code-keyword">import</span>
+                            <span class="code-variable"> requests</span>
+                            <span class="code-keyword ml-4">from</span>
+                            <span class="code-variable"> bs4</span>
+                            <span class="code-keyword"> import</span>
+                            <span class="code-variable"> BeautifulSoup</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Define target URL</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-variable">url</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-string">"https://example.com/products"</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Send HTTP request</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-variable">response</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-variable">requests</span>
+                            <span class="code-operator">.</span>
+                            <span class="code-function">get</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-variable">url</span>
+                            <span class="code-operator">)</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Parse HTML content</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-variable">soup</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-variable">BeautifulSoup</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-variable">response</span>
+                            <span class="code-operator">.</span>
+                            <span class="code-variable">text</span>
+                            <span class="code-operator">, </span>
+                            <span class="code-string">'html.parser'</span>
+                            <span class="code-operator">)</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Extract product data</span>
+                        </div>
+                        <div class="data-highlight">
+                            <div class="code-line">
+                                <span class="code-variable">products</span>
+                                <span class="code-operator"> = </span>
+                                <span class="code-variable">soup</span>
+                                <span class="code-operator">.</span>
+                                <span class="code-function">find_all</span>
+                                <span class="code-operator">(</span>
+                                <span class="code-string">'div'</span>
+                                <span class="code-operator">, </span>
+                                <span class="code-variable">class_</span>
+                                <span class="code-operator">=</span>
+                                <span class="code-string">'product'</span>
+                                <span class="code-operator">)</span>
                             </div>
                         </div>
-                        <div class="mt-6 flex justify-between items-center">
-                            <div class="text-xs text-slate-400">Status: <span class="text-green-600 font-medium">Extracting data...</span></div>
-                            <div class="flex items-center">
-                                <div class="w-2 h-2 rounded-full bg-green-500 mr-1 animate-pulse"></div>
-                                <span class="text-xs text-slate-400">Active</span>
+                        <div class="code-line">
+                            <span class="code-keyword">for</span>
+                            <span class="code-variable"> product</span>
+                            <span class="code-keyword"> in</span>
+                            <span class="code-variable"> products</span>
+                            <span class="code-operator">:</span>
+                        </div>
+                        <div class="code-indent">
+                            <div class="code-line">
+                                <span class="code-variable">title</span>
+                                <span class="code-operator"> = </span>
+                                <span class="code-variable">product</span>
+                                <span class="code-operator">.</span>
+                                <span class="code-function">find</span>
+                                <span class="code-operator">(</span>
+                                <span class="code-string">'h2'</span>
+                                <span class="code-operator">).</span>
+                                <span class="code-variable">text</span>
                             </div>
+                            <div class="code-line">
+                                <span class="code-variable">price</span>
+                                <span class="code-operator"> = </span>
+                                <span class="code-variable">product</span>
+                                <span class="code-operator">.</span>
+                                <span class="code-function">find</span>
+                                <span class="code-operator">(</span>
+                                <span class="code-string">'span'</span>
+                                <span class="code-operator">, </span>
+                                <span class="code-variable">class_</span>
+                                <span class="code-operator">=</span>
+                                <span class="code-string">'price'</span>
+                                <span class="code-operator">).</span>
+                                <span class="code-variable">text</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="terminal-footer">
+                        <div>Status: <span class="text-green-400">Extracting data...</span></div>
+                        <div class="terminal-status">
+                            <div class="terminal-pulse"></div>
+                            <span>Active</span>
                         </div>
                     </div>
                 </div>
