@@ -60,6 +60,36 @@
             animation: scrape 3s linear infinite;
             z-index: 2;
         }
+        .profile-pic {
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .name-pic-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .name-pic-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
         @keyframes scrape {
             0% { transform: translateY(-100%); opacity: 0; }
             10% { opacity: 1; }
@@ -237,27 +267,58 @@
         <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
 
-        <div class="relative z-10 max-w-6xl mx-auto text-center px-4">
-            <div class="mb-8">
+        <div class="relative z-10 max-w-6xl mx-auto px-4">
+            <div class="flex flex-col items-center">
+                <!-- Role Badge -->
                 <div class="inline-block px-4 py-2 mb-6 text-sm font-medium text-blue-600 bg-blue-100 rounded-full">
                     <span class="typing-demo">Python Developer</span>
                 </div>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-                    <span class="gradient-text">Fahad Akram</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+                
+                <!-- Name and Profile Picture Container -->
+                <div class="name-pic-container mb-6">
+                    <!-- Name -->
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">
+                            <span class="gradient-text">Fahad Akram</span>
+                        </h1>
+                    </div>
+                    
+                    <!-- Profile Picture -->
+                    <div class="relative floating">
+                        <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden profile-pic bg-gradient-to-br from-blue-100 to-emerald-100 p-1">
+                            <!-- Replace with your actual profile image -->
+                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQFVfBH_WA_h4A/profile-displayphoto-shrink_800_800/0/1729422087733?e=1753920000&v=beta&t=5jVN-8Scv7_aYN6Guw-QFm1DTNq9Lkm23YqKIoUQy_4" 
+                                 alt="Fahad Akram" 
+                                 class="w-full h-full object-cover rounded-full">
+
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-md">
+                            <div class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-full p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <p class="text-lg sm:text-xl text-slate-600 max-w-3xl text-center mb-10">
                     I extract valuable data from the web and transform it into actionable insights using Python and modern scraping techniques.
                 </p>
-            </div>
 
-            <div class="flex flex-wrap justify-center gap-4 mt-10">
-                <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    Contact Me
-                </a>
-                <a href="#projects" class="px-6 py-3 border border-blue-400 text-blue-600 font-medium rounded-full hover:bg-blue-50 transition-all duration-300 transform hover:scale-105">
-                    View Projects
-                </a>
+                <!-- Buttons -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Contact Me
+                    </a>
+                    <a href="#projects" class="px-6 py-3 border border-blue-400 text-blue-600 font-medium rounded-full hover:bg-blue-50 transition-all duration-300 transform hover:scale-105">
+                        View Projects
+                    </a>
+                </div>
             </div>
+        </div>
+    </section>
 
              <!-- Enhanced Web Scraping Animation -->
             <div class="mt-16 mx-auto max-w-2xl w-full">
