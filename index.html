@@ -447,6 +447,52 @@
                 transform: scale(1);
             }
         }
+        /* Add these new styles */
+        .scraping-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .scraping-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .scraping-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .scraping-animation {
+            width: 100%;
+            max-width: 600px;
+            transform: scale(0.9);
+            transform-origin: right center;
+        }
+        
+        .code-content {
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .code-line {
+            margin-bottom: 4px;
+        }
+        
+        @media (max-width: 1024px) {
+            .scraping-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .scraping-animation {
+                max-width: 100%;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -511,73 +557,15 @@
     <section class="py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
             <div class="scraping-section">
-                <!-- Left side - Information -->
-                <div class="scraping-info">
-                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Authentication Flow Explained</h3>
-                    <div class="space-y-4 text-slate-600">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
-                                <i class="fas fa-key"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-slate-700">Token Extraction</h4>
-                                <p class="text-sm">The scraper first extracts an authentication token from the login response, which will be used for subsequent authenticated requests.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
-                                <i class="fas fa-id-card"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-slate-700">Client ID</h4>
-                                <p class="text-sm">The client ID identifies the user session and is required for making API calls to protected endpoints.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-slate-700">Secure Headers</h4>
-                                <p class="text-sm">The scraper prepares headers with proper authentication tokens and security parameters to mimic a legitimate browser request.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-slate-700">Data Extraction</h4>
-                                <p class="text-sm">With valid authentication, the scraper can now access protected data by making API requests with the proper credentials.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-4 mt-4 border-t border-slate-200">
-                            <h4 class="font-medium text-slate-700 mb-2">Technical Details</h4>
-                            <ul class="text-sm space-y-2">
-                                <li class="flex items-start">
-                                    <span class="text-blue-500 mr-2">•</span>
-                                    <span>Uses Scrapy framework for robust scraping</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-blue-500 mr-2">•</span>
-                                    <span>Handles JSON responses and authentication tokens</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-blue-500 mr-2">•</span>
-                                    <span>Mimics browser headers to avoid detection</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-blue-500 mr-2">•</span>
-                                    <span>Implements proper error handling for robustness</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="scraping-image-container">
+                    <img src="assets/web-scraping-with-python.png" 
+                         alt="Web Scraping with Python"
+                         class="scraping-image"
+                         width="825"
+                         height="413">
+                    <p class="mt-2 text-sm text-slate-500 text-center">Python web scraping workflow diagram</p>
                 </div>
+
                 
                 <!-- Right side - Scraping Animation -->
                 <div class="scraping-animation-container">
