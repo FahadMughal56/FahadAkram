@@ -27,39 +27,7 @@
             background-clip: text;
             color: transparent;
         }
-        .scraping-animation {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            background-color: #1e293b;
-            color: #f8fafc;
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            overflow-x: auto;
-        }
-        .scraping-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-            z-index: 1;
-        }
-        .scraping-animation::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent, rgba(59, 130, 246, 0.2), transparent);
-            animation: scrape 3s linear infinite;
-            z-index: 2;
-        }
+        
         .profile-pic {
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -168,96 +136,279 @@
             .timeline-item::before {
                 left: 18px;
             }
-            .scraping-animation {
-                font-size: 0.75rem;
-                padding: 1rem;
-                min-width: 320px;
-            }
-            .scraping-animation::after {
-                animation-duration: 4s;
-            }
+            
+        @keyframes scrape {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
         }
-        .code-keyword {
-            color: #c792ea;
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
-        .code-string {
-            color: #c3e88d;
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
-        .code-variable {
-            color: #82aaff;
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #10b981 }
         }
-        .code-function {
-            color: #82aaff;
+        
+        @keyframes dataGlow {
+            0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
         }
-        .code-operator {
-            color: #89ddff;
+        
+        @keyframes dataFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .code-comment {
-            color: #546e7a;
+        
+        .scraping-animation {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            background-color: #1e293b;
+            color: #f8fafc;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
         }
-        .code-number {
-            color: #f78c6c;
+        
+        .scraping-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            z-index: 1;
         }
-        .code-builtin {
-            color: #ffcb6b;
+        
+        .scraping-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(59, 130, 246, 0.2), transparent);
+            animation: scrape 3s linear infinite;
+            z-index: 2;
         }
+        
         .terminal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #334155;
+            padding: 8px 16px;
+            background-color: #0f172a;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
         }
+        
         .terminal-dots {
             display: flex;
+            gap: 8px;
         }
+        
         .terminal-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            margin-right: 8px;
         }
+        
         .terminal-title {
             color: #94a3b8;
-            font-size: 0.75rem;
+            font-size: 14px;
         }
+        
+        .code-content {
+            padding: 16px;
+            position: relative;
+            z-index: 3;
+            min-height: 300px;
+        }
+        
+        .code-line {
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #10b981;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        .code-keyword {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        
+        .code-variable {
+            color: #f8fafc;
+        }
+        
+        .code-string {
+            color: #10b981;
+        }
+        
+        .code-comment {
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .code-operator {
+            color: #f59e0b;
+        }
+        
+        .code-function {
+            color: #8b5cf6;
+        }
+        
         .terminal-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid #334155;
-            font-size: 0.75rem;
-            color: #94a3b8;
+            padding: 8px 16px;
+            background-color: #0f172a;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            font-size: 14px;
         }
+        
         .terminal-status {
             display: flex;
             align-items: center;
+            gap: 8px;
         }
+        
         .terminal-pulse {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: #10b981;
-            margin-right: 6px;
             animation: pulse 1.5s infinite;
         }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
+        
+        .data-highlight {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            background-size: 200% 100%;
+            animation: dataFlow 3s ease infinite;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #10b981;
+            animation: dataGlow 2s infinite;
         }
-        .code-line {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 0.5rem;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
+        
         .code-indent {
-            margin-left: 1rem;
+            padding-left: 20px;
+            border-left: 1px solid #334155;
+            margin: 8px 0;
+        }
+        
+        .data-visualization {
+            position: absolute;
+            right: 20px;
+            top: 50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(30, 41, 59, 0.8);
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 4;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .data-visualization.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .data-item {
+            background-color: #0f172a;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .data-item-title {
+            color: #f8fafc;
+        }
+        
+        .data-item-value {
+            color: #10b981;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background-color: #334155;
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            transition: width 0.5s ease;
+        }
+        
+        .network-activity {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            z-index: 4;
+        }
+        
+        .network-bar {
+            width: 4px;
+            height: 20px;
+            background-color: #334155;
+            border-radius: 2px;
+            animation: networkPulse 1.5s infinite ease-in-out;
+        }
+        
+        .network-bar:nth-child(1) { animation-delay: 0.1s; }
+        .network-bar:nth-child(2) { animation-delay: 0.3s; }
+        .network-bar:nth-child(3) { animation-delay: 0.5s; }
+        .network-bar:nth-child(4) { animation-delay: 0.7s; }
+        .network-bar:nth-child(5) { animation-delay: 0.9s; }
+        
+        @keyframes networkPulse {
+            0%, 100% { height: 10px; background-color: #334155; }
+            50% { height: 30px; background-color: #3b82f6; }
+        }
+        
+        .tooltip {
+            position: absolute;
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -320,129 +471,162 @@
         </div>
     </section>
 
-             <!-- Enhanced Web Scraping Animation -->
-            <div class="mt-16 mx-auto max-w-2xl w-full">
-                <div class="scraping-animation">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <div class="terminal-dot bg-red-500"></div>
-                            <div class="terminal-dot bg-yellow-500"></div>
-                            <div class="terminal-dot bg-green-500"></div>
-                        </div>
-                        <div class="terminal-title">scraper.py</div>
+        <div class="w-full max-w-4xl px-4">
+            <!-- Enhanced Web Scraping Animation -->
+            <div class="scraping-animation relative">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <div class="terminal-dot bg-red-500"></div>
+                        <div class="terminal-dot bg-yellow-500"></div>
+                        <div class="terminal-dot bg-green-500"></div>
                     </div>
-
-                    <div class="code-content">
-                        <div class="code-line">
-                            <span class="code-keyword">import</span>
-                            <span class="code-variable"> requests</span>
-                            <span class="code-keyword ml-4">from</span>
-                            <span class="code-variable"> bs4</span>
-                            <span class="code-keyword"> import</span>
-                            <span class="code-variable"> BeautifulSoup</span>
+                    <div class="terminal-title">scraper.py</div>
+                </div>
+                
+                <div class="code-content">
+                    <!-- Data Visualization Panel (hidden initially) -->
+                    <div class="data-visualization" id="dataPanel">
+                        <div class="text-sm font-medium text-center mb-2 text-emerald-400">Extracted Data</div>
+                        <div class="data-item">
+                            <span class="data-item-title">Product 1</span>
+                            <span class="data-item-value">$49.99</span>
                         </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Define target URL</span>
+                        <div class="data-item">
+                            <span class="data-item-title">Product 2</span>
+                            <span class="data-item-value">$29.99</span>
                         </div>
+                        <div class="data-item">
+                            <span class="data-item-title">Product 3</span>
+                            <span class="data-item-value">$79.99</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Network Activity Indicator -->
+                    <div class="network-activity">
+                        <div class="network-bar"></div>
+                        <div class="network-bar"></div>
+                        <div class="network-bar"></div>
+                        <div class="network-bar"></div>
+                        <div class="network-bar"></div>
+                    </div>
+                    
+                    <!-- Code Lines with Interactive Elements -->
+                    <div class="code-line" data-tooltip="Importing required libraries">
+                        <span class="code-keyword">import</span>
+                        <span class="code-variable"> requests</span>
+                        <span class="code-keyword ml-4">from</span>
+                        <span class="code-variable"> bs4</span>
+                        <span class="code-keyword"> import</span>
+                        <span class="code-variable"> BeautifulSoup</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-comment"># Define target URL</span>
+                    </div>
+                    <div class="code-line" data-tooltip="Setting target website URL">
+                        <span class="code-variable">url</span>
+                        <span class="code-operator"> = </span>
+                        <span class="code-string">"https://example.com/products"</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-comment"># Send HTTP request</span>
+                    </div>
+                    <div class="code-line" data-tooltip="Making GET request to target URL">
+                        <span class="code-variable">response</span>
+                        <span class="code-operator"> = </span>
+                        <span class="code-variable">requests</span>
+                        <span class="code-operator">.</span>
+                        <span class="code-function">get</span>
+                        <span class="code-operator">(</span>
+                        <span class="code-variable">url</span>
+                        <span class="code-operator">)</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-comment"># Parse HTML content</span>
+                    </div>
+                    <div class="code-line" data-tooltip="Creating BeautifulSoup object for parsing">
+                        <span class="code-variable">soup</span>
+                        <span class="code-operator"> = </span>
+                        <span class="code-variable">BeautifulSoup</span>
+                        <span class="code-operator">(</span>
+                        <span class="code-variable">response</span>
+                        <span class="code-operator">.</span>
+                        <span class="code-variable">text</span>
+                        <span class="code-operator">, </span>
+                        <span class="code-string">'html.parser'</span>
+                        <span class="code-operator">)</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-comment"># Extract product data</span>
+                    </div>
+                    <div class="data-highlight" id="dataHighlight" data-tooltip="Finding all product elements">
                         <div class="code-line">
-                            <span class="code-variable">url</span>
+                            <span class="code-variable">products</span>
                             <span class="code-operator"> = </span>
-                            <span class="code-string">"https://example.com/products"</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Send HTTP request</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-variable">response</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">requests</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">get</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-variable">url</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Parse HTML content</span>
-                        </div>
-                        <div class="code-line">
                             <span class="code-variable">soup</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">BeautifulSoup</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-variable">response</span>
                             <span class="code-operator">.</span>
-                            <span class="code-variable">text</span>
+                            <span class="code-function">find_all</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-string">'div'</span>
                             <span class="code-operator">, </span>
-                            <span class="code-string">'html.parser'</span>
+                            <span class="code-variable">class_</span>
+                            <span class="code-operator">=</span>
+                            <span class="code-string">'product'</span>
                             <span class="code-operator">)</span>
                         </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Extract product data</span>
+                    </div>
+                    <div class="code-line" data-tooltip="Iterating through found products">
+                        <span class="code-keyword">for</span>
+                        <span class="code-variable"> product</span>
+                        <span class="code-keyword"> in</span>
+                        <span class="code-variable"> products</span>
+                        <span class="code-operator">:</span>
+                    </div>
+                    <div class="code-indent">
+                        <div class="code-line" data-tooltip="Extracting product title">
+                            <span class="code-variable">title</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-variable">product</span>
+                            <span class="code-operator">.</span>
+                            <span class="code-function">find</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-string">'h2'</span>
+                            <span class="code-operator">).</span>
+                            <span class="code-variable">text</span>
                         </div>
-                        <div class="data-highlight">
-                            <div class="code-line">
-                                <span class="code-variable">products</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-variable">soup</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">find_all</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'div'</span>
-                                <span class="code-operator">, </span>
-                                <span class="code-variable">class_</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-string">'product'</span>
-                                <span class="code-operator">)</span>
-                            </div>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-keyword">for</span>
-                            <span class="code-variable"> product</span>
-                            <span class="code-keyword"> in</span>
-                            <span class="code-variable"> products</span>
-                            <span class="code-operator">:</span>
-                        </div>
-                        <div class="code-indent">
-                            <div class="code-line">
-                                <span class="code-variable">title</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-variable">product</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">find</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'h2'</span>
-                                <span class="code-operator">).</span>
-                                <span class="code-variable">text</span>
-                            </div>
-                            <div class="code-line">
-                                <span class="code-variable">price</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-variable">product</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">find</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'span'</span>
-                                <span class="code-operator">, </span>
-                                <span class="code-variable">class_</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-string">'price'</span>
-                                <span class="code-operator">).</span>
-                                <span class="code-variable">text</span>
-                            </div>
+                        <div class="code-line" data-tooltip="Extracting product price">
+                            <span class="code-variable">price</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-variable">product</span>
+                            <span class="code-operator">.</span>
+                            <span class="code-function">find</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-string">'span'</span>
+                            <span class="code-operator">, </span>
+                            <span class="code-variable">class_</span>
+                            <span class="code-operator">=</span>
+                            <span class="code-string">'price'</span>
+                            <span class="code-operator">).</span>
+                            <span class="code-variable">text</span>
                         </div>
                     </div>
-
-                    <div class="terminal-footer">
-                        <div>Status: <span class="text-green-400">Extracting data...</span></div>
-                        <div class="terminal-status">
-                            <div class="terminal-pulse"></div>
-                            <span>Active</span>
-                        </div>
+                    
+                    <!-- Tooltip Element -->
+                    <div class="tooltip" id="tooltip"></div>
+                </div>
+                
+                <div class="terminal-footer">
+                    <div>Status: <span class="text-green-400">Extracting data...</span> <span id="statusDetail">Initializing scraper</span></div>
+                    <div class="terminal-status">
+                        <div class="terminal-pulse"></div>
+                        <span>Active</span>
                     </div>
                 </div>
-                <p class="mt-4 text-sm text-slate-500">Visualization of web scraping code extracting product data</p>
             </div>
+            
+            <p class="mt-4 text-sm text-slate-400 text-center">Interactive visualization of web scraping process with real-time data extraction</p>
         </div>
     </section>
 
@@ -948,5 +1132,41 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tooltip functionality
+            const tooltip = document.getElementById('tooltip');
+            const codeLines = document.querySelectorAll('[data-tooltip]');
+            
+            codeLines.forEach(line => {
+                line.addEventListener('mouseenter', (e) => {
+                    const tooltipText = e.target.getAttribute('data-tooltip');
+                    tooltip.textContent = tooltipText;
+                    tooltip.style.opacity = '1';
+                    
+                    const rect = e.target.getBoundingClientRect();
+                    tooltip.style.left = `${rect.left}px`;
+                    tooltip.style.top = `${rect.top - 35}px`;
+                });
+                
+                line.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+            
+            // Data panel animation
+            const dataPanel = document.getElementById('dataPanel');
+            const dataHighlight = document.getElementById('dataHighlight');
+            const progressFill = document.getElementById('progressFill');
+            const statusDetail = document.getElementById('statusDetail');
+            
+            // Simulate scraping process
+            setTimeout(() => {
+                statusDetail.textContent = "Connecting to target website...";
+            }, 1500);
+            
+            setTimeout(() => {
+                statusDetail.textContent = "Downloading page content...";
+            }, 
 </body>
 </html>
