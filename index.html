@@ -405,6 +405,48 @@
             border: 1px solid #334155;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        /* Add these new styles */
+        .scraping-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .scraping-info {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .scraping-animation {
+            width: 100%;
+            max-width: 600px;
+            transform: scale(0.9);
+            transform-origin: right center;
+        }
+        
+        .code-content {
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .code-line {
+            margin-bottom: 4px;
+        }
+        
+        @media (max-width: 1024px) {
+            .scraping-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .scraping-animation {
+                max-width: 100%;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -466,304 +508,377 @@
     </section>
 
     <!-- Scraping Demo Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 flex justify-center">
-        <div class="w-full max-w-4xl px-4">
-            <!-- Enhanced Web Scraping Animation -->
-            <div class="scraping-animation relative">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <div class="terminal-dot bg-red-500"></div>
-                        <div class="terminal-dot bg-yellow-500"></div>
-                        <div class="terminal-dot bg-green-500"></div>
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="scraping-section">
+                <!-- Left side - Information -->
+                <div class="scraping-info">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Authentication Flow Explained</h3>
+                    <div class="space-y-4 text-slate-600">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-700">Token Extraction</h4>
+                                <p class="text-sm">The scraper first extracts an authentication token from the login response, which will be used for subsequent authenticated requests.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-700">Client ID</h4>
+                                <p class="text-sm">The client ID identifies the user session and is required for making API calls to protected endpoints.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-700">Secure Headers</h4>
+                                <p class="text-sm">The scraper prepares headers with proper authentication tokens and security parameters to mimic a legitimate browser request.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1 mr-3 text-blue-500">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-slate-700">Data Extraction</h4>
+                                <p class="text-sm">With valid authentication, the scraper can now access protected data by making API requests with the proper credentials.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 mt-4 border-t border-slate-200">
+                            <h4 class="font-medium text-slate-700 mb-2">Technical Details</h4>
+                            <ul class="text-sm space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-2">•</span>
+                                    <span>Uses Scrapy framework for robust scraping</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-2">•</span>
+                                    <span>Handles JSON responses and authentication tokens</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-2">•</span>
+                                    <span>Mimics browser headers to avoid detection</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-2">•</span>
+                                    <span>Implements proper error handling for robustness</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="terminal-title">scraper.py</div>
                 </div>
                 
-                <div class="code-content">
-                    <!-- Data Visualization Panel (hidden initially) -->
-                    <div class="data-visualization" id="dataPanel">
-                        <div class="text-sm font-medium text-center mb-2 text-emerald-400">Extracted Data</div>
-                        <div class="data-item">
-                            <span class="data-item-title">Token</span>
-                            <span class="data-item-value">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
-                        </div>
-                        <div class="data-item">
-                            <span class="data-item-title">Client ID</span>
-                            <span class="data-item-value">123456789</span>
-                        </div>
-                        <div class="data-item">
-                            <span class="data-item-title">Current Page</span>
-                            <span class="data-item-value">1</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Network Activity Indicator -->
-                    <div class="network-activity">
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                    </div>
-                    
-                    <!-- Code Lines with Interactive Elements -->
-                    <div class="code-line" data-tooltip="Importing required libraries">
-                        <span class="code-keyword">import</span>
-                        <span class="code-variable"> json</span>
-                        <span class="code-keyword ml-4">import</span>
-                        <span class="code-variable"> scrapy</span>
-                    </div>
-                    
-                    <div class="code-line">
-                        <span class="code-comment"># Parse login response to extract token and client ID</span>
-                    </div>
-                    
-                    <div class="code-line" data-tooltip="Login parsing method definition">
-                        <span class="code-keyword">def</span>
-                        <span class="code-function"> parse_login</span>
-                        <span class="code-operator">(</span>
-                        <span class="code-variable">self</span>
-                        <span class="code-operator">, </span>
-                        <span class="code-variable">response</span>
-                        <span class="code-operator">):</span>
-                    </div>
-                    
-                    <div class="code-indent">
-                        <div class="code-line" data-tooltip="Parse JSON response">
-                            <span class="code-variable">data</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">json</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">loads</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-variable">response</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-variable">text</span>
-                            <span class="code-operator">)</span>
+                <!-- Right side - Scraping Animation -->
+                <div class="scraping-animation-container">
+                    <div class="scraping-animation relative">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot bg-red-500"></div>
+                                <div class="terminal-dot bg-yellow-500"></div>
+                                <div class="terminal-dot bg-green-500"></div>
+                            </div>
+                            <div class="terminal-title">auth_scraper.py</div>
                         </div>
                         
-                        <div class="code-line" data-tooltip="Extract token from response">
-                            <span class="code-variable">token</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">data</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">get</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'token'</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Check if token exists">
-                            <span class="code-keyword">if</span>
-                            <span class="code-keyword"> not</span>
-                            <span class="code-variable"> token</span>
-                            <span class="code-operator">:</span>
-                        </div>
-                        
-                        <div class="code-indent">
+                        <div class="code-content">
+                            <!-- Data Visualization Panel -->
+                            <div class="data-visualization" id="dataPanel">
+                                <div class="text-sm font-medium text-center mb-2 text-emerald-400">Extracted Data</div>
+                                <div class="data-item">
+                                    <span class="data-item-title">Token</span>
+                                    <span class="data-item-value">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="data-item-title">Client ID</span>
+                                    <span class="data-item-value">CLIENT_789XYZ</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="data-item-title">Status</span>
+                                    <span class="data-item-value">Authenticated</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Network Activity Indicator -->
+                            <div class="network-activity">
+                                <div class="network-bar"></div>
+                                <div class="network-bar"></div>
+                                <div class="network-bar"></div>
+                                <div class="network-bar"></div>
+                                <div class="network-bar"></div>
+                            </div>
+                            
+                            <!-- Your Python code here (same as before) -->
+                            <div class="code-line" data-tooltip="Importing required libraries">
+                                <span class="code-keyword">import</span>
+                                <span class="code-variable"> json</span>
+                                <span class="code-keyword ml-4">import</span>
+                                <span class="code-variable"> scrapy</span>
+                            </div>
+                            
+                            <!-- Rest of your Python code -->
                             <div class="code-line">
-                                <span class="code-variable">self</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-variable">logger</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">error</span>
+                                <span class="code-comment"># Parse login response to extract token and client ID</span>
+                            </div>
+                            
+                            <div class="code-line" data-tooltip="Login parsing method definition">
+                                <span class="code-keyword">def</span>
+                                <span class="code-function"> parse_login</span>
                                 <span class="code-operator">(</span>
-                                <span class="code-string">'No token found in response'</span>
-                                <span class="code-operator">)</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-keyword">return</span>
-                            </div>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Extract client ID from response">
-                            <span class="code-variable">client_id</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">data</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">get</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'user'</span>
-                            <span class="code-operator">, </span>
-                            <span class="code-operator">{}</span>
-                            <span class="code-operator">)</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">get</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'clientId'</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Check if client ID exists">
-                            <span class="code-keyword">if</span>
-                            <span class="code-keyword"> not</span>
-                            <span class="code-variable"> client_id</span>
-                            <span class="code-operator">:</span>
-                        </div>
-                        
-                        <div class="code-indent">
-                            <div class="code-line">
                                 <span class="code-variable">self</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-variable">logger</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">error</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'No client ID found in response'</span>
-                                <span class="code-operator">)</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-keyword">return</span>
-                            </div>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Print client ID for debugging">
-                            <span class="code-function">print</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'Client ID:'</span>
-                            <span class="code-operator">, </span>
-                            <span class="code-variable">client_id</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Prepare headers for authenticated request">
-                            <span class="code-variable">headers</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-operator">{</span>
-                        </div>
-                        
-                        <div class="code-indent">
-                            <div class="code-line">
-                                <span class="code-string">'sec-ch-ua-platform'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-string">'"Windows"'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-string">'Authorization'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-variable">token</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-string">'Referer'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-string">'https://bestbuyforbusiness.ca/en-CA/'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-string">'User-Agent'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-string">'Accept'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-string">'application/json, text/plain, */*'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-string">'sec-ch-ua'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-string">'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-string">'sec-ch-ua-mobile'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-string">'?0'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                        </div>
-                        
-                        <div class="code-line">
-                            <span class="code-operator">}</span>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Initialize page counter">
-                            <span class="code-variable">curr_page</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-number">1</span>
-                        </div>
-                        
-                        <div class="code-line" data-tooltip="Yield authenticated request">
-                            <span class="code-keyword">yield</span>
-                            <span class="code-variable"> scrapy</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-variable">Request</span>
-                            <span class="code-operator">(</span>
-                        </div>
-                        
-                        <div class="code-indent">
-                            <div class="code-line">
-                                <span class="code-variable">url</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-string">f'https://bestbuyforbusiness.ca/api/category/navigation?clientId={client_id}'</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-variable">headers</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-variable">headers</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-variable">callback</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-variable">self</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-variable">parse_protected_data</span>
-                                <span class="code-operator">,</span>
-                            </div>
-                            
-                            <div class="code-line">
-                                <span class="code-variable">meta</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-operator">{</span>
-                                <span class="code-string">'curr_page'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-variable">curr_page</span>
                                 <span class="code-operator">, </span>
-                                <span class="code-string">'token'</span>
-                                <span class="code-operator">: </span>
-                                <span class="code-variable">token</span>
-                                <span class="code-operator">}</span>
+                                <span class="code-variable">response</span>
+                                <span class="code-operator">):</span>
                             </div>
+                            
+                            <div class="code-indent">
+                                <div class="code-line" data-tooltip="Parse JSON response">
+                                    <span class="code-variable">data</span>
+                                    <span class="code-operator"> = </span>
+                                    <span class="code-variable">json</span>
+                                    <span class="code-operator">.</span>
+                                    <span class="code-function">loads</span>
+                                    <span class="code-operator">(</span>
+                                    <span class="code-variable">response</span>
+                                    <span class="code-operator">.</span>
+                                    <span class="code-variable">text</span>
+                                    <span class="code-operator">)</span>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Extract token from response">
+                                    <span class="code-variable">token</span>
+                                    <span class="code-operator"> = </span>
+                                    <span class="code-variable">data</span>
+                                    <span class="code-operator">.</span>
+                                    <span class="code-function">get</span>
+                                    <span class="code-operator">(</span>
+                                    <span class="code-string">'token'</span>
+                                    <span class="code-operator">)</span>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Check if token exists">
+                                    <span class="code-keyword">if</span>
+                                    <span class="code-keyword"> not</span>
+                                    <span class="code-variable"> token</span>
+                                    <span class="code-operator">:</span>
+                                </div>
+                                
+                                <div class="code-indent">
+                                    <div class="code-line">
+                                        <span class="code-variable">self</span>
+                                        <span class="code-operator">.</span>
+                                        <span class="code-variable">logger</span>
+                                        <span class="code-operator">.</span>
+                                        <span class="code-function">error</span>
+                                        <span class="code-operator">(</span>
+                                        <span class="code-string">'No token found in response'</span>
+                                        <span class="code-operator">)</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-keyword">return</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Extract client ID from response">
+                                    <span class="code-variable">client_id</span>
+                                    <span class="code-operator"> = </span>
+                                    <span class="code-variable">data</span>
+                                    <span class="code-operator">.</span>
+                                    <span class="code-function">get</span>
+                                    <span class="code-operator">(</span>
+                                    <span class="code-string">'user'</span>
+                                    <span class="code-operator">, </span>
+                                    <span class="code-operator">{}</span>
+                                    <span class="code-operator">)</span>
+                                    <span class="code-operator">.</span>
+                                    <span class="code-function">get</span>
+                                    <span class="code-operator">(</span>
+                                    <span class="code-string">'clientId'</span>
+                                    <span class="code-operator">)</span>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Check if client ID exists">
+                                    <span class="code-keyword">if</span>
+                                    <span class="code-keyword"> not</span>
+                                    <span class="code-variable"> client_id</span>
+                                    <span class="code-operator">:</span>
+                                </div>
+                                
+                                <div class="code-indent">
+                                    <div class="code-line">
+                                        <span class="code-variable">self</span>
+                                        <span class="code-operator">.</span>
+                                        <span class="code-variable">logger</span>
+                                        <span class="code-operator">.</span>
+                                        <span class="code-function">error</span>
+                                        <span class="code-operator">(</span>
+                                        <span class="code-string">'No client ID found in response'</span>
+                                        <span class="code-operator">)</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-keyword">return</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Print client ID for debugging">
+                                    <span class="code-function">print</span>
+                                    <span class="code-operator">(</span>
+                                    <span class="code-string">'Client ID:'</span>
+                                    <span class="code-operator">, </span>
+                                    <span class="code-variable">client_id</span>
+                                    <span class="code-operator">)</span>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Prepare headers for authenticated request">
+                                    <span class="code-variable">headers</span>
+                                    <span class="code-operator"> = </span>
+                                    <span class="code-operator">{</span>
+                                </div>
+                                
+                                <div class="code-indent">
+                                    <div class="code-line">
+                                        <span class="code-string">'sec-ch-ua-platform'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-string">'"Windows"'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-string">'Authorization'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-variable">token</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-string">'Referer'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-string">'https://bestbuyforbusiness.ca/en-CA/'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-string">'User-Agent'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-string">'Accept'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-string">'application/json, text/plain, */*'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-string">'sec-ch-ua'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-string">'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-string">'sec-ch-ua-mobile'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-string">'?0'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-line">
+                                    <span class="code-operator">}</span>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Initialize page counter">
+                                    <span class="code-variable">curr_page</span>
+                                    <span class="code-operator"> = </span>
+                                    <span class="code-number">1</span>
+                                </div>
+                                
+                                <div class="code-line" data-tooltip="Yield authenticated request">
+                                    <span class="code-keyword">yield</span>
+                                    <span class="code-variable"> scrapy</span>
+                                    <span class="code-operator">.</span>
+                                    <span class="code-variable">Request</span>
+                                    <span class="code-operator">(</span>
+                                </div>
+                                
+                                <div class="code-indent">
+                                    <div class="code-line">
+                                        <span class="code-variable">url</span>
+                                        <span class="code-operator">=</span>
+                                        <span class="code-string">f'https://bestbuyforbusiness.ca/api/category/navigation?clientId={client_id}'</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-variable">headers</span>
+                                        <span class="code-operator">=</span>
+                                        <span class="code-variable">headers</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-variable">callback</span>
+                                        <span class="code-operator">=</span>
+                                        <span class="code-variable">self</span>
+                                        <span class="code-operator">.</span>
+                                        <span class="code-variable">parse_protected_data</span>
+                                        <span class="code-operator">,</span>
+                                    </div>
+                                    
+                                    <div class="code-line">
+                                        <span class="code-variable">meta</span>
+                                        <span class="code-operator">=</span>
+                                        <span class="code-operator">{</span>
+                                        <span class="code-string">'curr_page'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-variable">curr_page</span>
+                                        <span class="code-operator">, </span>
+                                        <span class="code-string">'token'</span>
+                                        <span class="code-operator">: </span>
+                                        <span class="code-variable">token</span>
+                                        <span class="code-operator">}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-line">
+                                    <span class="code-operator">)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tooltip Element -->
+                            <div class="tooltip" id="tooltip"></div>
                         </div>
                         
-                        <div class="code-line">
-                            <span class="code-operator">)</span>
+                        <div class="terminal-footer">
+                            <div>Status: <span class="text-green-400">Extracting data...</span> <span id="statusDetail">Initializing scraper</span></div>
+                            <div class="terminal-status">
+                                <div class="terminal-pulse"></div>
+                                <span>Active</span>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Tooltip Element -->
-                    <div class="tooltip" id="tooltip"></div>
-                </div>
-                
-                <div class="terminal-footer">
-                    <div>Status: <span class="text-green-400">Extracting data...</span> <span id="statusDetail">Initializing scraper</span></div>
-                    <div class="terminal-status">
-                        <div class="terminal-pulse"></div>
-                        <span>Active</span>
-                    </div>
+                    <p class="mt-4 text-sm text-slate-400 text-center">Interactive visualization of authentication scraping process</p>
                 </div>
             </div>
-            
-            <p class="mt-4 text-sm text-slate-400 text-center">Interactive visualization of web scraping process with authentication flow</p>
         </div>
     </section>
 
