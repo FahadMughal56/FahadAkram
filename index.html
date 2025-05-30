@@ -3,140 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahad Akram | Python Developer | Web Scraping Specialist</title>
+    <title>Advanced Web Scraping Animation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            scroll-behavior: smooth;
-        }
-        .card-hover a {
-            word-break: break-all;
-            overflow-wrap: break-word;
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #10b981);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .profile-pic {
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-        }
-        .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        .name-pic-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        @media (max-width: 768px) {
-            .name-pic-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        @keyframes scrape {
-            0% { transform: translateY(-100%); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100%); opacity: 0; }
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .skill-pill {
-            transition: all 0.2s ease;
-        }
-        .skill-pill:hover {
-            transform: translateY(-1px);
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -38px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #3b82f6;
-            border: 3px solid #f1f5f9;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: #e2e8f0;
-        }
-        .typing-demo {
-            width: 22ch;
-            animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid;
-        }
-        @keyframes typing {
-            from { width: 0 }
-        }
-        @keyframes blink {
-            50% { border-color: transparent }
-        }
-        .data-highlight {
-            position: relative;
-            overflow: hidden;
-        }
-        .data-highlight::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
-            animation: highlight 2s ease-in-out infinite;
-        }
-        @keyframes highlight {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 24px;
-            }
-            .timeline-item::before {
-                left: 18px;
-            }
-            
         @keyframes scrape {
             0% { transform: translateY(-100%); }
             100% { transform: translateY(100%); }
@@ -412,727 +282,166 @@
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-emerald-50">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-
-        <div class="relative z-10 max-w-6xl mx-auto px-4">
-            <div class="flex flex-col items-center">
-                <!-- Role Badge -->
-                <div class="inline-block px-4 py-2 mb-6 text-sm font-medium text-blue-600 bg-blue-100 rounded-full">
-                    <span class="typing-demo">Python Developer</span>
+<body class="bg-slate-900 text-slate-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-4xl px-4">
+        <!-- Enhanced Web Scraping Animation -->
+        <div class="scraping-animation relative">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="terminal-dot bg-red-500"></div>
+                    <div class="terminal-dot bg-yellow-500"></div>
+                    <div class="terminal-dot bg-green-500"></div>
                 </div>
-                
-                <!-- Name and Profile Picture Container -->
-                <div class="name-pic-container mb-6">
-                    <!-- Name -->
-                    <div>
-                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">
-                            <span class="gradient-text">Fahad Akram</span>
-                        </h1>
-                    </div>
-                    
-                    <!-- Profile Picture -->
-                    <div class="relative floating">
-                        <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden profile-pic bg-gradient-to-br from-blue-100 to-emerald-100 p-1">
-                            <!-- Replace with your actual profile image -->
-                            <img src="assets/AirBrush_20241020154624_crop.jpg" 
-                                 alt="Fahad Akram" 
-                                 class="w-full h-full object-cover rounded-full">
-
-                        </div>
-                        <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-md">
-                            <div class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-full p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Description -->
-                <p class="text-lg sm:text-xl text-slate-600 max-w-3xl text-center mb-10">
-                    I extract valuable data from the web and transform it into actionable insights using Python and modern scraping techniques.
-                </p>
-
-                <!-- Buttons -->
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                        Contact Me
-                    </a>
-                    <a href="#projects" class="px-6 py-3 border border-blue-400 text-blue-600 font-medium rounded-full hover:bg-blue-50 transition-all duration-300 transform hover:scale-105">
-                        View Projects
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <div class="w-full max-w-4xl px-4">
-            <!-- Enhanced Web Scraping Animation -->
-            <div class="scraping-animation relative">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <div class="terminal-dot bg-red-500"></div>
-                        <div class="terminal-dot bg-yellow-500"></div>
-                        <div class="terminal-dot bg-green-500"></div>
-                    </div>
-                    <div class="terminal-title">scraper.py</div>
-                </div>
-                
-                <div class="code-content">
-                    <!-- Data Visualization Panel (hidden initially) -->
-                    <div class="data-visualization" id="dataPanel">
-                        <div class="text-sm font-medium text-center mb-2 text-emerald-400">Extracted Data</div>
-                        <div class="data-item">
-                            <span class="data-item-title">Product 1</span>
-                            <span class="data-item-value">$49.99</span>
-                        </div>
-                        <div class="data-item">
-                            <span class="data-item-title">Product 2</span>
-                            <span class="data-item-value">$29.99</span>
-                        </div>
-                        <div class="data-item">
-                            <span class="data-item-title">Product 3</span>
-                            <span class="data-item-value">$79.99</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Network Activity Indicator -->
-                    <div class="network-activity">
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                        <div class="network-bar"></div>
-                    </div>
-                    
-                    <!-- Code Lines with Interactive Elements -->
-                    <div class="code-line" data-tooltip="Importing required libraries">
-                        <span class="code-keyword">import</span>
-                        <span class="code-variable"> requests</span>
-                        <span class="code-keyword ml-4">from</span>
-                        <span class="code-variable"> bs4</span>
-                        <span class="code-keyword"> import</span>
-                        <span class="code-variable"> BeautifulSoup</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="code-comment"># Define target URL</span>
-                    </div>
-                    <div class="code-line" data-tooltip="Setting target website URL">
-                        <span class="code-variable">url</span>
-                        <span class="code-operator"> = </span>
-                        <span class="code-string">"https://example.com/products"</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="code-comment"># Send HTTP request</span>
-                    </div>
-                    <div class="code-line" data-tooltip="Making GET request to target URL">
-                        <span class="code-variable">response</span>
-                        <span class="code-operator"> = </span>
-                        <span class="code-variable">requests</span>
-                        <span class="code-operator">.</span>
-                        <span class="code-function">get</span>
-                        <span class="code-operator">(</span>
-                        <span class="code-variable">url</span>
-                        <span class="code-operator">)</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="code-comment"># Parse HTML content</span>
-                    </div>
-                    <div class="code-line" data-tooltip="Creating BeautifulSoup object for parsing">
-                        <span class="code-variable">soup</span>
-                        <span class="code-operator"> = </span>
-                        <span class="code-variable">BeautifulSoup</span>
-                        <span class="code-operator">(</span>
-                        <span class="code-variable">response</span>
-                        <span class="code-operator">.</span>
-                        <span class="code-variable">text</span>
-                        <span class="code-operator">, </span>
-                        <span class="code-string">'html.parser'</span>
-                        <span class="code-operator">)</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="code-comment"># Extract product data</span>
-                    </div>
-                    <div class="data-highlight" id="dataHighlight" data-tooltip="Finding all product elements">
-                        <div class="code-line">
-                            <span class="code-variable">products</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">soup</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">find_all</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'div'</span>
-                            <span class="code-operator">, </span>
-                            <span class="code-variable">class_</span>
-                            <span class="code-operator">=</span>
-                            <span class="code-string">'product'</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                    </div>
-                    <div class="code-line" data-tooltip="Iterating through found products">
-                        <span class="code-keyword">for</span>
-                        <span class="code-variable"> product</span>
-                        <span class="code-keyword"> in</span>
-                        <span class="code-variable"> products</span>
-                        <span class="code-operator">:</span>
-                    </div>
-                    <div class="code-indent">
-                        <div class="code-line" data-tooltip="Extracting product title">
-                            <span class="code-variable">title</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">product</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">find</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'h2'</span>
-                            <span class="code-operator">).</span>
-                            <span class="code-variable">text</span>
-                        </div>
-                        <div class="code-line" data-tooltip="Extracting product price">
-                            <span class="code-variable">price</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">product</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">find</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-string">'span'</span>
-                            <span class="code-operator">, </span>
-                            <span class="code-variable">class_</span>
-                            <span class="code-operator">=</span>
-                            <span class="code-string">'price'</span>
-                            <span class="code-operator">).</span>
-                            <span class="code-variable">text</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Tooltip Element -->
-                    <div class="tooltip" id="tooltip"></div>
-                </div>
-                
-                <div class="terminal-footer">
-                    <div>Status: <span class="text-green-400">Extracting data...</span> <span id="statusDetail">Initializing scraper</span></div>
-                    <div class="terminal-status">
-                        <div class="terminal-pulse"></div>
-                        <span>Active</span>
-                    </div>
-                </div>
+                <div class="terminal-title">scraper.py</div>
             </div>
             
-            <p class="mt-4 text-sm text-slate-400 text-center">Interactive visualization of web scraping process with real-time data extraction</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                    <span class="gradient-text">About Me</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto"></div>
+            <div class="code-content">
+                <!-- Data Visualization Panel (hidden initially) -->
+                <div class="data-visualization" id="dataPanel">
+                    <div class="text-sm font-medium text-center mb-2 text-emerald-400">Extracted Data</div>
+                    <div class="data-item">
+                        <span class="data-item-title">Product 1</span>
+                        <span class="data-item-value">$49.99</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-item-title">Product 2</span>
+                        <span class="data-item-value">$29.99</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-item-title">Product 3</span>
+                        <span class="data-item-value">$79.99</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Network Activity Indicator -->
+                <div class="network-activity">
+                    <div class="network-bar"></div>
+                    <div class="network-bar"></div>
+                    <div class="network-bar"></div>
+                    <div class="network-bar"></div>
+                    <div class="network-bar"></div>
+                </div>
+                
+                <!-- Code Lines with Interactive Elements -->
+                <div class="code-line" data-tooltip="Importing required libraries">
+                    <span class="code-keyword">import</span>
+                    <span class="code-variable"> requests</span>
+                    <span class="code-keyword ml-4">from</span>
+                    <span class="code-variable"> bs4</span>
+                    <span class="code-keyword"> import</span>
+                    <span class="code-variable"> BeautifulSoup</span>
+                </div>
+                <div class="code-line">
+                    <span class="code-comment"># Define target URL</span>
+                </div>
+                <div class="code-line" data-tooltip="Setting target website URL">
+                    <span class="code-variable">url</span>
+                    <span class="code-operator"> = </span>
+                    <span class="code-string">"https://example.com/products"</span>
+                </div>
+                <div class="code-line">
+                    <span class="code-comment"># Send HTTP request</span>
+                </div>
+                <div class="code-line" data-tooltip="Making GET request to target URL">
+                    <span class="code-variable">response</span>
+                    <span class="code-operator"> = </span>
+                    <span class="code-variable">requests</span>
+                    <span class="code-operator">.</span>
+                    <span class="code-function">get</span>
+                    <span class="code-operator">(</span>
+                    <span class="code-variable">url</span>
+                    <span class="code-operator">)</span>
+                </div>
+                <div class="code-line">
+                    <span class="code-comment"># Parse HTML content</span>
+                </div>
+                <div class="code-line" data-tooltip="Creating BeautifulSoup object for parsing">
+                    <span class="code-variable">soup</span>
+                    <span class="code-operator"> = </span>
+                    <span class="code-variable">BeautifulSoup</span>
+                    <span class="code-operator">(</span>
+                    <span class="code-variable">response</span>
+                    <span class="code-operator">.</span>
+                    <span class="code-variable">text</span>
+                    <span class="code-operator">, </span>
+                    <span class="code-string">'html.parser'</span>
+                    <span class="code-operator">)</span>
+                </div>
+                <div class="code-line">
+                    <span class="code-comment"># Extract product data</span>
+                </div>
+                <div class="data-highlight" id="dataHighlight" data-tooltip="Finding all product elements">
+                    <div class="code-line">
+                        <span class="code-variable">products</span>
+                        <span class="code-operator"> = </span>
+                        <span class="code-variable">soup</span>
+                        <span class="code-operator">.</span>
+                        <span class="code-function">find_all</span>
+                        <span class="code-operator">(</span>
+                        <span class="code-string">'div'</span>
+                        <span class="code-operator">, </span>
+                        <span class="code-variable">class_</span>
+                        <span class="code-operator">=</span>
+                        <span class="code-string">'product'</span>
+                        <span class="code-operator">)</span>
+                    </div>
+                </div>
+                <div class="code-line" data-tooltip="Iterating through found products">
+                    <span class="code-keyword">for</span>
+                    <span class="code-variable"> product</span>
+                    <span class="code-keyword"> in</span>
+                    <span class="code-variable"> products</span>
+                    <span class="code-operator">:</span>
+                </div>
+                <div class="code-indent">
+                    <div class="code-line" data-tooltip="Extracting product title">
+                        <span class="code-variable">title</span>
+                        <span class="code-operator"> = </span>
+                        <span class="code-variable">product</span>
+                        <span class="code-operator">.</span>
+                        <span class="code-function">find</span>
+                        <span class="code-operator">(</span>
+                        <span class="code-string">'h2'</span>
+                        <span class="code-operator">).</span>
+                        <span class="code-variable">text</span>
+                    </div>
+                    <div class="code-line" data-tooltip="Extracting product price">
+                        <span class="code-variable">price</span>
+                        <span class="code-operator"> = </span>
+                        <span class="code-variable">product</span>
+                        <span class="code-operator">.</span>
+                        <span class="code-function">find</span>
+                        <span class="code-operator">(</span>
+                        <span class="code-string">'span'</span>
+                        <span class="code-operator">, </span>
+                        <span class="code-variable">class_</span>
+                        <span class="code-operator">=</span>
+                        <span class="code-string">'price'</span>
+                        <span class="code-operator">).</span>
+                        <span class="code-variable">text</span>
+                    </div>
+                </div>
+                
+                <!-- Tooltip Element -->
+                <div class="tooltip" id="tooltip"></div>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-                <div class="space-y-4 sm:space-y-6">
-                    <h3 class="text-2xl font-semibold text-slate-800">Python & Web Scraping Specialist</h3>
-                    <p class="text-slate-800">
-                        I'm a Python developer with extensive experience in web scraping and data engineering. My expertise includes extracting data from complex websites using Scrapy, Selenium, Playwright, and handling various anti-bot measures like CAPTCHAs and Cloudflare protection.
-                    </p>
-                    <p class="text-slate-800">        
-                        Currently working as a Data Engineer, I help businesses collect, process, and analyze web data for competitive intelligence, market research, and machine learning applications.
-                    </p>
-
-                    <div class="pt-4 sm:pt-6">
-                        <h4 class="text-xl font-semibold text-slate-800 mb-3 sm:mb-4">Objective</h4>
-                        <div class="bg-blue-50 p-4 sm:p-6 rounded-xl border-l-4 border-blue-500">
-                            <p class="text-slate-800 italic">
-                                "To leverage my Python and web scraping expertise in building scalable data extraction
-                                solutions that drive informed decision-making and business growth."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <h3 class="text-xl font-semibold text-slate-800 mb-4 sm:mb-6">Personal Info</h3>
-                    <div class="space-y-3 sm:space-y-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">Location</h4>
-                                <p class="text-slate-700">Mandi Bahauddin, Punjab, Pakistan</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">Email</h4>
-                                <a href="mailto:fahadthecoder@gmail.com" class="text-slate-700 hover:text-blue-600 transition-colors">fahadthecoder@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/fahad-akram-9a867524a" target="_blank" class="text-slate-700 hover:text-blue-600 transition-colors">linkedin.com/in/fahad-akram-9a867524a</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                          <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                            <i class="fab fa-upwork"></i>
-                          </div>
-                          <div class="ml-4">
-                            <h4 class="text-sm font-medium text-slate-500">Upwork</h4>
-                            <a href="https://upwork.com/freelancers/~01181de50d2e6fddcc" target="_blank" class="text-slate-700 hover:text-blue-600 transition-colors">upwork.com/freelancers/~01181de50d2e6fddcc</a>
-                          </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">Education</h4>
-                                <p class="text-slate-700">Bachelors in Computer Science (2021-2025)</p>
-                                <p class="text-slate-500 text-sm">University of Gujrat</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                    <span class="gradient-text">Technical Skills</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Python Development -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <div class="flex items-center mb-4 sm:mb-6">
-                        <div class="flex-shrink-0 h-10 sm:h-12 w-10 sm:w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <h3 class="ml-3 sm:ml-4 text-lg sm:text-xl font-semibold text-slate-800">Python Development</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">Python 3</span>
-                        <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">Django</span>
-                        <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">Flask</span>
-                        <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">FastAPI</span>
-                        <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">Pandas</span>
-                        <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">NumPy</span>
-                    </div>
-                </div>
-
-                <!-- Web Scraping -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <div class="flex items-center mb-4 sm:mb-6">
-                        <div class="flex-shrink-0 h-10 sm:h-12 w-10 sm:w-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-xl">
-                            <i class="fas fa-spider"></i>
-                        </div>
-                        <h3 class="ml-3 sm:ml-4 text-lg sm:text-xl font-semibold text-slate-800">Web Scraping</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">Scrapy</span>
-                        <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">BeautifulSoup</span>
-                        <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">Selenium</span>
-                        <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">Playwright</span>
-                        <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">Proxy Rotation</span>
-                        <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">CAPTCHA Solving</span>
-                    </div>
-                </div>
-
-                <!-- Data Processing -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <div class="flex items-center mb-4 sm:mb-6">
-                        <div class="flex-shrink-0 h-10 sm:h-12 w-10 sm:w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xl">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 class="ml-3 sm:ml-4 text-lg sm:text-xl font-semibold text-slate-800">Data Processing</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm">SQL</span>
-                        <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm">MongoDB</span>
-                        <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm">ETL</span>
-                        <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm">Data Cleaning</span>
-                        <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm">REST APIs</span>
-                        <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm">GraphQL</span>
-                    </div>
-                </div>
-
-                <!-- AI & Automation -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <div class="flex items-center mb-4 sm:mb-6">
-                        <div class="flex-shrink-0 h-10 sm:h-12 w-10 sm:w-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-xl">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3 class="ml-3 sm:ml-4 text-lg sm:text-xl font-semibold text-slate-800">AI & Automation</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs sm:text-sm">LLaMA</span>
-                        <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs sm:text-sm">DeepSeek</span>
-                        <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs sm:text-sm">OpenAI</span>
-                        <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs sm:text-sm">NLP</span>
-                        <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs sm:text-sm">Automation</span>
-                    </div>
-                </div>
-
-                <!-- Web Development -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <div class="flex items-center mb-4 sm:mb-6">
-                        <div class="flex-shrink-0 h-10 sm:h-12 w-10 sm:w-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xl">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="ml-3 sm:ml-4 text-lg sm:text-xl font-semibold text-slate-800">Web Development</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm">HTML/CSS</span>
-                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm">JavaScript</span>
-                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm">TailwindCSS</span>
-                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm">Bootstrap</span>
-                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm">React</span>
-                    </div>
-                </div>
-
-                <!-- Tools & Platforms -->
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <div class="flex items-center mb-4 sm:mb-6">
-                        <div class="flex-shrink-0 h-10 sm:h-12 w-10 sm:w-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-xl">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="ml-3 sm:ml-4 text-lg sm:text-xl font-semibold text-slate-800">Tools & Platforms</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs sm:text-sm">Git</span>
-                        <span class="skill-pill px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs sm:text-sm">Docker</span>
-                        <span class="skill-pill px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs sm:text-sm">AWS</span>
-                        <span class="skill-pill px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs sm:text-sm">Postman</span>
-                        <span class="skill-pill px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs sm:text-sm">Jupyter</span>
-                    </div>
+            
+            <div class="terminal-footer">
+                <div>Status: <span class="text-green-400">Extracting data...</span> <span id="statusDetail">Initializing scraper</span></div>
+                <div class="terminal-status">
+                    <div class="terminal-pulse"></div>
+                    <span>Active</span>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="projects" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                    <span class="gradient-text">Work Experience & Projects</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto"></div>
-            </div>
-
-            <div class="relative timeline pl-12 sm:pl-16">
-                <!-- Scrape Byte -->
-                <div class="relative timeline-item mb-8 sm:mb-12">
-                    <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                        <div class="flex items-center mb-4">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg sm:text-xl font-semibold text-slate-800">Web Scraping Engineer</h3>
-                                <p class="text-blue-600 text-sm sm:text-base">Scrape Byte, Gujrat, Pakistan</p>
-                                <p class="text-slate-500 text-xs sm:text-sm">Mar 2024 – Present (1 yr 2 mos)</p>
-                            </div>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm sm:text-base">
-                            <li>Built scrapers using Scrapy, Selenium, and Playwright for dynamic and session-based websites</li>
-                            <li>Scraped public notices from ncnotices.com and texaspublicnotices.com, handled sessions and CAPTCHAs via 2Captcha, and performed structured data parsing using local open-source LLaMA models to extract fields like date, case number, and location.</li>
-                            <li>Scraped 2.2M+ records from Goodreads by reverse-engineering GraphQL APIs</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- FYP -->
-                <div class="relative timeline-item mb-8 sm:mb-12">
-                    <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                        <div class="flex items-center mb-4">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                                <i class="fas fa-project-diagram"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg sm:text-xl font-semibold text-slate-800">AI-Powered Job Recommendation System</h3>
-                                <p class="text-emerald-600 text-sm sm:text-base">Final Year Project (FYP)</p>
-                                <p class="text-slate-500 text-xs sm:text-sm">2024 - 2025</p>
-                            </div>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm sm:text-base">
-                            <li>Built Django-based job portal with real-time job scraping and automated data updates via cron jobs</li>
-                            <li>Parsed resumes using LLaMA 3.2, extracting complete user details to auto-fill signup forms seamlessly</li>
-                            <li>Designed REST APIs and a responsive frontend using HTML, CSS, and Bootstrap for personalized job recommendations</li>
-                            <li>Added modules for companies and individuals to post jobs</li>
-                        </ul>
-                        <div class="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Django</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">LLaMA</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Web Scraping</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">NLP</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Cron Jobs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI Experience -->
-                <div class="relative timeline-item">
-                    <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                        <div class="flex items-center mb-4">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg sm:text-xl font-semibold text-slate-800">AI & NLP Experience</h3>
-                                <p class="text-amber-600 text-sm sm:text-base">Personal Projects & Research</p>
-                            </div>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm sm:text-base">
-                            <li>Used open-source LLaMA/DeepSeek models to extract structured data from unstructured notice descriptions</li>
-                            <li>Gained hands-on experience with function calling using OpenAI and DeepSeek for structured information extraction</li>
-                            <li>Implemented AI-powered data extraction pipelines combining web scraping with NLP techniques</li>
-                        </ul>
-                        <div class="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">LLaMA</span>
-                            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">DeepSeek</span>
-                            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">OpenAI</span>
-                            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">NLP</span>
-                            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">Data Extraction</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                    <span class="gradient-text">Get In Touch</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
-                <div>
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 sm:mb-6">Let's Connect</h3>
-                    <p class="text-slate-600 mb-6 sm:mb-8">
-                        Interested in working together or have questions about my services?
-                        Feel free to reach out through any of the channels below.
-                    </p>
-
-                    <div class="space-y-4 sm:space-y-6">
-                        <a href="mailto:fahadthecoder@gmail.com" class="flex items-start group">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">Email</h4>
-                                <p class="text-slate-700 group-hover:text-blue-600 transition-colors">fahadthecoder@gmail.com</p>
-                            </div>
-                        </a>
-                        <a href="https://www.linkedin.com/in/fahad-akram-9a867524a" target="_blank" class="flex items-start group">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">LinkedIn</h4>
-                                <p class="text-slate-700 group-hover:text-blue-600 transition-colors">linkedin.com/in/fahad-akram-9a867524a</p>
-                            </div>
-                        </a>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-slate-500">Location</h4>
-                                <p class="text-slate-700">Mandi Bahauddin, Punjab, Pakistan</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 card-hover shadow-sm">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 sm:mb-6">Send Me a Message</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-slate-600 mb-1">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-slate-600 mb-1">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-slate-600 mb-1">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700"></textarea>
-                        </div>
-                        <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h2 class="text-xl font-bold gradient-text">Fahad Akram</h2>
-                    <p class="text-slate-500 text-sm">Python Developer | Web Scraping Specialist</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="mailto:fahadthecoder@gmail.com" class="text-slate-500 hover:text-blue-600 transition-colors duration-300">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/fahad-akram-9a867524a" target="_blank" class="text-slate-500 hover:text-blue-600 transition-colors duration-300">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-8 text-center text-slate-400 text-sm">
-                <p>© 2025 Fahad Akram. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        
+        <p class="mt-4 text-sm text-slate-400 text-center">Interactive visualization of web scraping process with real-time data extraction</p>
+    </div>
 
     <script>
-        // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero section animations
-        gsap.from(".typing-demo", {
-            duration: 1,
-            opacity: 0,
-            y: 20,
-            ease: "power2.out"
-        });
-
-        gsap.from("h1", {
-            scrollTrigger: {
-                trigger: "h1",
-                start: "top 80%"
-            },
-            duration: 1,
-            opacity: 0,
-            y: 50,
-            ease: "power2.out"
-        });
-
-        // About section animations
-        // gsap.from("#about h2", {
-        //     scrollTrigger: {
-        //         trigger: "#about h2",
-        //         start: "top 80%"
-        //     },
-        //     duration: 0.8,
-        //     opacity: 0,
-        //     y: 30,
-        //     ease: "power2.out"
-        // });
-
-        // gsap.from("#about .grid > div", {
-        //     scrollTrigger: {
-        //         trigger: "#about .grid",
-        //         start: "top 70%"
-        //     },
-        //     duration: 0.8,
-        //     opacity: 0,
-        //     y: 40,
-        //     stagger: 0.2,
-        //     ease: "power2.out"
-        // });
-
-        // Skills section animations
-        // gsap.from(".skill-pill", {
-        //     scrollTrigger: {
-        //         trigger: ".skill-pill",
-        //         start: "top 80%"
-        //     },
-        //     duration: 0.5,
-        //     opacity: 0,
-        //     y: 20,
-        //     stagger: 0.05,
-        //     ease: "power1.out"
-        // });
-
-        // Timeline animations
-        gsap.from(".timeline-item", {
-            scrollTrigger: {
-                trigger: ".timeline",
-                start: "top 70%"
-            },
-            duration: 0.8,
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            ease: "power2.out"
-        });
-
-        // Contact form animation
-        gsap.from("#contact form", {
-            scrollTrigger: {
-                trigger: "#contact",
-                start: "top 70%"
-            },
-            duration: 0.8,
-            opacity: 0,
-            x: 50,
-            ease: "power2.out"
-        });
-
-        // Mobile menu toggle (if needed in future)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make email and LinkedIn buttons clickable
-            const emailBtn = document.querySelector('a[href^="mailto:"]');
-            const linkedinBtn = document.querySelector('a[href^="https://www.linkedin.com"]');
-
-            if (emailBtn) {
-                emailBtn.addEventListener('click', function(e) {
-                    // Optional: Add analytics tracking here
-                    console.log('Email button clicked');
-                });
-            }
-
-            if (linkedinBtn) {
-                linkedinBtn.addEventListener('click', function(e) {
-                    // Optional: Add analytics tracking here
-                    console.log('LinkedIn button clicked');
-                });
-            }
-        });
-    </script>
-    <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script>
         document.addEventListener('DOMContentLoaded', function() {
             // Tooltip functionality
             const tooltip = document.getElementById('tooltip');
@@ -1168,5 +477,4 @@
             setTimeout(() => {
                 statusDetail.textContent = "Downloading page content...";
             }, 
-</body>
 </html>
