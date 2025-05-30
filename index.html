@@ -6,6 +6,7 @@
     <title>Fahad Akram | Python Developer | Web Scraping Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -26,7 +27,39 @@
             background-clip: text;
             color: transparent;
         }
-        
+        .scraping-animation {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 1.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        .scraping-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            z-index: 1;
+        }
+        .scraping-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(59, 130, 246, 0.2), transparent);
+            animation: scrape 3s linear infinite;
+            z-index: 2;
+        }
         .profile-pic {
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -135,525 +168,96 @@
             .timeline-item::before {
                 left: 18px;
             }
+            .scraping-animation {
+                font-size: 0.75rem;
+                padding: 1rem;
+                min-width: 320px;
+            }
+            .scraping-animation::after {
+                animation-duration: 4s;
+            }
         }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .code-keyword {
+            color: #c792ea;
         }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .code-string {
+            color: #c3e88d;
         }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #10b981 }
+        .code-variable {
+            color: #82aaff;
         }
-        
-        @keyframes dataGlow {
-            0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+        .code-function {
+            color: #82aaff;
         }
-        
-        @keyframes dataFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .code-operator {
+            color: #89ddff;
         }
-        
-        .scraping-animation {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-            background-color: #1e293b;
-            color: #f8fafc;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
+        .code-comment {
+            color: #546e7a;
         }
-        
-        .scraping-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-            z-index: 1;
+        .code-number {
+            color: #f78c6c;
         }
-        
-        .scraping-animation::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent, rgba(59, 130, 246, 0.2), transparent);
-            animation: scrape 3s linear infinite;
-            z-index: 2;
+        .code-builtin {
+            color: #ffcb6b;
         }
-        
         .terminal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 16px;
-            background-color: #0f172a;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #334155;
         }
-        
         .terminal-dots {
             display: flex;
-            gap: 8px;
         }
-        
         .terminal-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
+            margin-right: 8px;
         }
-        
         .terminal-title {
             color: #94a3b8;
-            font-size: 14px;
+            font-size: 0.75rem;
         }
-        
-        .code-content {
-            padding: 16px;
-            position: relative;
-            z-index: 3;
-            min-height: 300px;
-        }
-        
-        .code-line {
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid #10b981;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        .code-keyword {
-            color: #3b82f6;
-            font-weight: bold;
-        }
-        
-        .code-variable {
-            color: #f8fafc;
-        }
-        
-        .code-string {
-            color: #10b981;
-        }
-        
-        .code-comment {
-            color: #64748b;
-            font-style: italic;
-        }
-        
-        .code-operator {
-            color: #f59e0b;
-        }
-        
-        .code-function {
-            color: #8b5cf6;
-        }
-        
         .terminal-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 16px;
-            background-color: #0f172a;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            font-size: 14px;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #334155;
+            font-size: 0.75rem;
+            color: #94a3b8;
         }
-        
         .terminal-status {
             display: flex;
             align-items: center;
-            gap: 8px;
         }
-        
         .terminal-pulse {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: #10b981;
+            margin-right: 6px;
             animation: pulse 1.5s infinite;
         }
-        
-        .data-highlight {
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
-            background-size: 200% 100%;
-            animation: dataFlow 3s ease infinite;
-            border-radius: 4px;
-            padding: 8px;
-            margin: 8px 0;
-            border-left: 3px solid #10b981;
-            animation: dataGlow 2s infinite;
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
-        
+        .code-line {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
         .code-indent {
-            padding-left: 20px;
-            border-left: 1px solid #334155;
-            margin: 8px 0;
-        }
-        
-        .data-visualization {
-            position: absolute;
-            right: 20px;
-            top: 50px;
-            width: 150px;
-            height: 150px;
-            background-color: rgba(30, 41, 59, 0.8);
-            border-radius: 8px;
-            padding: 10px;
-            border: 1px solid #334155;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            z-index: 4;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-        
-        .data-visualization.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .data-item {
-            background-color: #0f172a;
-            padding: 5px;
-            border-radius: 4px;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .data-item-title {
-            color: #f8fafc;
-        }
-        
-        .data-item-value {
-            color: #10b981;
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background-color: #334155;
-            border-radius: 2px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, #3b82f6, #10b981);
-            transition: width 0.5s ease;
-        }
-        
-        .network-activity {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 5px;
-            z-index: 4;
-        }
-        
-        .network-bar {
-            width: 4px;
-            height: 20px;
-            background-color: #334155;
-            border-radius: 2px;
-            animation: networkPulse 1.5s infinite ease-in-out;
-        }
-        
-        .network-bar:nth-child(1) { animation-delay: 0.1s; }
-        .network-bar:nth-child(2) { animation-delay: 0.3s; }
-        .network-bar:nth-child(3) { animation-delay: 0.5s; }
-        .network-bar:nth-child(4) { animation-delay: 0.7s; }
-        .network-bar:nth-child(5) { animation-delay: 0.9s; }
-        
-        @keyframes networkPulse {
-            0%, 100% { height: 10px; background-color: #334155; }
-            50% { height: 30px; background-color: #3b82f6; }
-        }
-        
-        .tooltip {
-            position: absolute;
-            background-color: #0f172a;
-            color: #f8fafc;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            z-index: 5;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            border: 1px solid #334155;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        /* Add these new styles */
-        .scraping-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .scraping-info {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            height: 100%;
-        }
-        
-        .scraping-animation {
-            width: 100%;
-            max-width: 600px;
-            transform: scale(0.9);
-            transform-origin: right center;
-        }
-        
-        .code-content {
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        
-        .code-line {
-            margin-bottom: 4px;
-        }
-        
-        @media (max-width: 1024px) {
-            .scraping-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .scraping-animation {
-                max-width: 100%;
-                transform: scale(1);
-            }
-        }
-        /* Add these new styles */
-        .scraping-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .scraping-image {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .scraping-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .scraping-animation {
-            width: 100%;
-            max-width: 600px;
-            transform: scale(0.9);
-            transform-origin: right center;
-        }
-        
-        .code-content {
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        
-        .code-line {
-            margin-bottom: 4px;
-        }
-        
-        @media (max-width: 1024px) {
-            .scraping-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .scraping-animation {
-                max-width: 100%;
-                transform: scale(1);
-            }
-        }
-       /* Modern Use Cases Styles */
-        .use-cases-container {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-            border-radius: 16px;
-            box-shadow: 
-                0 4px 6px rgba(0, 0, 0, 0.05),
-                0 1px 3px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(8px);
-        }
-        
-        .use-cases-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .use-cases-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #10b981);
-            border-radius: 3px;
-        }
-        
-        .use-cases-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-        }
-        
-        .use-case {
-            display: flex;
-            align-items: center;
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(209, 213, 219, 0.3);
-        }
-        
-        .use-case:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            background: white;
-            border-color: rgba(209, 213, 219, 0.5);
-        }
-        
-        .use-case-number {
-            font-weight: 700;
-            color: white;
-            min-width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-            border-radius: 8px;
-            margin-right: 1rem;
-            font-size: 0.875rem;
-            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
-        }
-        
-        .use-case-text {
-            flex-grow: 1;
-            font-weight: 500;
-            color: #1f2937;
-            font-size: 0.95rem;
-            letter-spacing: -0.01em;
-        }
-        
-        .use-case-icon {
             margin-left: 1rem;
-            font-size: 1.4rem;
-            min-width: 28px;
-            text-align: center;
-            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.1));
-        }
-        
-        @media (min-width: 768px) {
-            .use-cases-list {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .use-case {
-                padding: 1.1rem 1.5rem;
-            }
-            
-            .use-case-text {
-                font-size: 1rem;
-            }
-        }
-        
-        /* Keep existing styles for scraping animation */
-        .scraping-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        @media (max-width: 1024px) {
-            .scraping-section {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .use-cases-list {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        /* Keep existing styles for scraping animation */
-        .scraping-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .scraping-animation {
-            width: 100%;
-            max-width: 600px;
-            transform: scale(0.9);
-            transform-origin: right center;
-        }
-        
-        .code-content {
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        
-        .code-line {
-            margin-bottom: 4px;
-        }
-        
-        @media (max-width: 1024px) {
-            .scraping-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .scraping-animation {
-                max-width: 100%;
-                transform: scale(1);
-            }
         }
     </style>
 </head>
@@ -686,6 +290,7 @@
                             <img src="assets/AirBrush_20241020154624_crop.jpg" 
                                  alt="Fahad Akram" 
                                  class="w-full h-full object-cover rounded-full">
+
                         </div>
                         <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-md">
                             <div class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-full p-2">
@@ -715,367 +320,128 @@
         </div>
     </section>
 
-    <!-- Scraping Demo Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="scraping-section">
-                <!-- Left side - Use Cases -->
-                <div class="use-cases-container">
-                    <h3 class="use-cases-title">Web Scraping Use Cases</h3>
-                    <div class="use-cases-list">
-                        <div class="use-case">
-                            <span class="use-case-number">1</span>
-                            <span class="use-case-text">Consumer Sentiment Analysis</span>
-                            <span class="use-case-icon">🧠</span>
+             <!-- Enhanced Web Scraping Animation -->
+            <div class="mt-16 mx-auto max-w-2xl w-full">
+                <div class="scraping-animation">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
                         </div>
-                        <div class="use-case">
-                            <span class="use-case-number">2</span>
-                            <span class="use-case-text">Lead Generation</span>
-                            <span class="use-case-icon">📩</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">3</span>
-                            <span class="use-case-text">Data Enrichment</span>
-                            <span class="use-case-icon">🧮</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">4</span>
-                            <span class="use-case-text">Training ML Models</span>
-                            <span class="use-case-icon">🤖</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">5</span>
-                            <span class="use-case-text">Price Intelligence</span>
-                            <span class="use-case-icon">💰</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">6</span>
-                            <span class="use-case-text">Financial Monitoring</span>
-                            <span class="use-case-icon">📈</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">7</span>
-                            <span class="use-case-text">Market Research</span>
-                            <span class="use-case-icon">🔍</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">8</span>
-                            <span class="use-case-text">Job Market Analysis</span>
-                            <span class="use-case-icon">💼</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">9</span>
-                            <span class="use-case-text">News Monitoring</span>
-                            <span class="use-case-icon">📰</span>
-                        </div>
-                        <div class="use-case">
-                            <span class="use-case-number">10</span>
-                            <span class="use-case-text">Weather Data</span>
-                            <span class="use-case-icon">🌦️</span>
-                        </div>
+                        <div class="terminal-title">scraper.py</div>
                     </div>
-                </div>
 
-                
-                <!-- Right side - Scraping Animation -->
-                <div class="scraping-animation-container">
-                    <div class="scraping-animation relative">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <div class="terminal-dot bg-red-500"></div>
-                                <div class="terminal-dot bg-yellow-500"></div>
-                                <div class="terminal-dot bg-green-500"></div>
-                            </div>
-                            <div class="terminal-title">auth_scraper.py</div>
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="code-keyword">import</span>
+                            <span class="code-variable"> requests</span>
+                            <span class="code-keyword ml-4">from</span>
+                            <span class="code-variable"> bs4</span>
+                            <span class="code-keyword"> import</span>
+                            <span class="code-variable"> BeautifulSoup</span>
                         </div>
-                        
-                        <div class="code-content">
-                            <!-- Data Visualization Panel -->
-                            <div class="data-visualization" id="dataPanel">
-                                <div class="text-sm font-medium text-center mb-2 text-emerald-400">Extracted Data</div>
-                                <div class="data-item">
-                                    <span class="data-item-title">Token</span>
-                                    <span class="data-item-value">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
-                                </div>
-                                <div class="data-item">
-                                    <span class="data-item-title">Client ID</span>
-                                    <span class="data-item-value">CLIENT_789XYZ</span>
-                                </div>
-                                <div class="data-item">
-                                    <span class="data-item-title">Status</span>
-                                    <span class="data-item-value">Authenticated</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progressFill"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Network Activity Indicator -->
-                            <div class="network-activity">
-                                <div class="network-bar"></div>
-                                <div class="network-bar"></div>
-                                <div class="network-bar"></div>
-                                <div class="network-bar"></div>
-                                <div class="network-bar"></div>
-                            </div>
-                            
-                            <!-- Your Python code here (same as before) -->
-                            <div class="code-line" data-tooltip="Importing required libraries">
-                                <span class="code-keyword">import</span>
-                                <span class="code-variable"> json</span>
-                                <span class="code-keyword ml-4">import</span>
-                                <span class="code-variable"> scrapy</span>
-                            </div>
-                            
-                            <!-- Rest of your Python code -->
+                        <div class="code-line">
+                            <span class="code-comment"># Define target URL</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-variable">url</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-string">"https://example.com/products"</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Send HTTP request</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-variable">response</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-variable">requests</span>
+                            <span class="code-operator">.</span>
+                            <span class="code-function">get</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-variable">url</span>
+                            <span class="code-operator">)</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Parse HTML content</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-variable">soup</span>
+                            <span class="code-operator"> = </span>
+                            <span class="code-variable">BeautifulSoup</span>
+                            <span class="code-operator">(</span>
+                            <span class="code-variable">response</span>
+                            <span class="code-operator">.</span>
+                            <span class="code-variable">text</span>
+                            <span class="code-operator">, </span>
+                            <span class="code-string">'html.parser'</span>
+                            <span class="code-operator">)</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Extract product data</span>
+                        </div>
+                        <div class="data-highlight">
                             <div class="code-line">
-                                <span class="code-comment"># Parse login response to extract token and client ID</span>
-                            </div>
-                            
-                            <div class="code-line" data-tooltip="Login parsing method definition">
-                                <span class="code-keyword">def</span>
-                                <span class="code-function"> parse_login</span>
+                                <span class="code-variable">products</span>
+                                <span class="code-operator"> = </span>
+                                <span class="code-variable">soup</span>
+                                <span class="code-operator">.</span>
+                                <span class="code-function">find_all</span>
                                 <span class="code-operator">(</span>
-                                <span class="code-variable">self</span>
+                                <span class="code-string">'div'</span>
                                 <span class="code-operator">, </span>
-                                <span class="code-variable">response</span>
-                                <span class="code-operator">):</span>
+                                <span class="code-variable">class_</span>
+                                <span class="code-operator">=</span>
+                                <span class="code-string">'product'</span>
+                                <span class="code-operator">)</span>
                             </div>
-                            
-                            <div class="code-indent">
-                                <div class="code-line" data-tooltip="Parse JSON response">
-                                    <span class="code-variable">data</span>
-                                    <span class="code-operator"> = </span>
-                                    <span class="code-variable">json</span>
-                                    <span class="code-operator">.</span>
-                                    <span class="code-function">loads</span>
-                                    <span class="code-operator">(</span>
-                                    <span class="code-variable">response</span>
-                                    <span class="code-operator">.</span>
-                                    <span class="code-variable">text</span>
-                                    <span class="code-operator">)</span>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Extract token from response">
-                                    <span class="code-variable">token</span>
-                                    <span class="code-operator"> = </span>
-                                    <span class="code-variable">data</span>
-                                    <span class="code-operator">.</span>
-                                    <span class="code-function">get</span>
-                                    <span class="code-operator">(</span>
-                                    <span class="code-string">'token'</span>
-                                    <span class="code-operator">)</span>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Check if token exists">
-                                    <span class="code-keyword">if</span>
-                                    <span class="code-keyword"> not</span>
-                                    <span class="code-variable"> token</span>
-                                    <span class="code-operator">:</span>
-                                </div>
-                                
-                                <div class="code-indent">
-                                    <div class="code-line">
-                                        <span class="code-variable">self</span>
-                                        <span class="code-operator">.</span>
-                                        <span class="code-variable">logger</span>
-                                        <span class="code-operator">.</span>
-                                        <span class="code-function">error</span>
-                                        <span class="code-operator">(</span>
-                                        <span class="code-string">'No token found in response'</span>
-                                        <span class="code-operator">)</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-keyword">return</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Extract client ID from response">
-                                    <span class="code-variable">client_id</span>
-                                    <span class="code-operator"> = </span>
-                                    <span class="code-variable">data</span>
-                                    <span class="code-operator">.</span>
-                                    <span class="code-function">get</span>
-                                    <span class="code-operator">(</span>
-                                    <span class="code-string">'user'</span>
-                                    <span class="code-operator">, </span>
-                                    <span class="code-operator">{}</span>
-                                    <span class="code-operator">)</span>
-                                    <span class="code-operator">.</span>
-                                    <span class="code-function">get</span>
-                                    <span class="code-operator">(</span>
-                                    <span class="code-string">'clientId'</span>
-                                    <span class="code-operator">)</span>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Check if client ID exists">
-                                    <span class="code-keyword">if</span>
-                                    <span class="code-keyword"> not</span>
-                                    <span class="code-variable"> client_id</span>
-                                    <span class="code-operator">:</span>
-                                </div>
-                                
-                                <div class="code-indent">
-                                    <div class="code-line">
-                                        <span class="code-variable">self</span>
-                                        <span class="code-operator">.</span>
-                                        <span class="code-variable">logger</span>
-                                        <span class="code-operator">.</span>
-                                        <span class="code-function">error</span>
-                                        <span class="code-operator">(</span>
-                                        <span class="code-string">'No client ID found in response'</span>
-                                        <span class="code-operator">)</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-keyword">return</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Print client ID for debugging">
-                                    <span class="code-function">print</span>
-                                    <span class="code-operator">(</span>
-                                    <span class="code-string">'Client ID:'</span>
-                                    <span class="code-operator">, </span>
-                                    <span class="code-variable">client_id</span>
-                                    <span class="code-operator">)</span>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Prepare headers for authenticated request">
-                                    <span class="code-variable">headers</span>
-                                    <span class="code-operator"> = </span>
-                                    <span class="code-operator">{</span>
-                                </div>
-                                
-                                <div class="code-indent">
-                                    <div class="code-line">
-                                        <span class="code-string">'sec-ch-ua-platform'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-string">'"Windows"'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-string">'Authorization'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-variable">token</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-string">'Referer'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-string">'https://bestbuyforbusiness.ca/en-CA/'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-string">'User-Agent'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-string">'Accept'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-string">'application/json, text/plain, */*'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-string">'sec-ch-ua'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-string">'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-string">'sec-ch-ua-mobile'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-string">'?0'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="code-line">
-                                    <span class="code-operator">}</span>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Initialize page counter">
-                                    <span class="code-variable">curr_page</span>
-                                    <span class="code-operator"> = </span>
-                                    <span class="code-number">1</span>
-                                </div>
-                                
-                                <div class="code-line" data-tooltip="Yield authenticated request">
-                                    <span class="code-keyword">yield</span>
-                                    <span class="code-variable"> scrapy</span>
-                                    <span class="code-operator">.</span>
-                                    <span class="code-variable">Request</span>
-                                    <span class="code-operator">(</span>
-                                </div>
-                                
-                                <div class="code-indent">
-                                    <div class="code-line">
-                                        <span class="code-variable">url</span>
-                                        <span class="code-operator">=</span>
-                                        <span class="code-string">f'https://bestbuyforbusiness.ca/api/category/navigation?clientId={client_id}'</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-variable">headers</span>
-                                        <span class="code-operator">=</span>
-                                        <span class="code-variable">headers</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-variable">callback</span>
-                                        <span class="code-operator">=</span>
-                                        <span class="code-variable">self</span>
-                                        <span class="code-operator">.</span>
-                                        <span class="code-variable">parse_protected_data</span>
-                                        <span class="code-operator">,</span>
-                                    </div>
-                                    
-                                    <div class="code-line">
-                                        <span class="code-variable">meta</span>
-                                        <span class="code-operator">=</span>
-                                        <span class="code-operator">{</span>
-                                        <span class="code-string">'curr_page'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-variable">curr_page</span>
-                                        <span class="code-operator">, </span>
-                                        <span class="code-string">'token'</span>
-                                        <span class="code-operator">: </span>
-                                        <span class="code-variable">token</span>
-                                        <span class="code-operator">}</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="code-line">
-                                    <span class="code-operator">)</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tooltip Element -->
-                            <div class="tooltip" id="tooltip"></div>
                         </div>
-                        
-                        <div class="terminal-footer">
-                            <div>Status: <span class="text-green-400">Extracting data...</span> <span id="statusDetail">Initializing scraper</span></div>
-                            <div class="terminal-status">
-                                <div class="terminal-pulse"></div>
-                                <span>Active</span>
+                        <div class="code-line">
+                            <span class="code-keyword">for</span>
+                            <span class="code-variable"> product</span>
+                            <span class="code-keyword"> in</span>
+                            <span class="code-variable"> products</span>
+                            <span class="code-operator">:</span>
+                        </div>
+                        <div class="code-indent">
+                            <div class="code-line">
+                                <span class="code-variable">title</span>
+                                <span class="code-operator"> = </span>
+                                <span class="code-variable">product</span>
+                                <span class="code-operator">.</span>
+                                <span class="code-function">find</span>
+                                <span class="code-operator">(</span>
+                                <span class="code-string">'h2'</span>
+                                <span class="code-operator">).</span>
+                                <span class="code-variable">text</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-variable">price</span>
+                                <span class="code-operator"> = </span>
+                                <span class="code-variable">product</span>
+                                <span class="code-operator">.</span>
+                                <span class="code-function">find</span>
+                                <span class="code-operator">(</span>
+                                <span class="code-string">'span'</span>
+                                <span class="code-operator">, </span>
+                                <span class="code-variable">class_</span>
+                                <span class="code-operator">=</span>
+                                <span class="code-string">'price'</span>
+                                <span class="code-operator">).</span>
+                                <span class="code-variable">text</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <p class="mt-4 text-sm text-slate-400 text-center">Interactive visualization of authentication scraping process</p>
+
+                    <div class="terminal-footer">
+                        <div>Status: <span class="text-green-400">Extracting data...</span></div>
+                        <div class="terminal-status">
+                            <div class="terminal-pulse"></div>
+                            <span>Active</span>
+                        </div>
+                    </div>
                 </div>
+                <p class="mt-4 text-sm text-slate-500">Visualization of web scraping code extracting product data</p>
             </div>
         </div>
     </section>
@@ -1495,6 +861,43 @@
             ease: "power2.out"
         });
 
+        // About section animations
+        // gsap.from("#about h2", {
+        //     scrollTrigger: {
+        //         trigger: "#about h2",
+        //         start: "top 80%"
+        //     },
+        //     duration: 0.8,
+        //     opacity: 0,
+        //     y: 30,
+        //     ease: "power2.out"
+        // });
+
+        // gsap.from("#about .grid > div", {
+        //     scrollTrigger: {
+        //         trigger: "#about .grid",
+        //         start: "top 70%"
+        //     },
+        //     duration: 0.8,
+        //     opacity: 0,
+        //     y: 40,
+        //     stagger: 0.2,
+        //     ease: "power2.out"
+        // });
+
+        // Skills section animations
+        // gsap.from(".skill-pill", {
+        //     scrollTrigger: {
+        //         trigger: ".skill-pill",
+        //         start: "top 80%"
+        //     },
+        //     duration: 0.5,
+        //     opacity: 0,
+        //     y: 20,
+        //     stagger: 0.05,
+        //     ease: "power1.out"
+        // });
+
         // Timeline animations
         gsap.from(".timeline-item", {
             scrollTrigger: {
@@ -1520,117 +923,30 @@
             ease: "power2.out"
         });
 
-        // Tooltip functionality
+        // Mobile menu toggle (if needed in future)
         document.addEventListener('DOMContentLoaded', function() {
-            const tooltip = document.getElementById('tooltip');
-            const codeLines = document.querySelectorAll('[data-tooltip]');
-            
-            codeLines.forEach(line => {
-                line.addEventListener('mouseenter', (e) => {
-                    const tooltipText = e.target.getAttribute('data-tooltip');
-                    tooltip.textContent = tooltipText;
-                    tooltip.style.opacity = '1';
-                    
-                    const rect = e.target.getBoundingClientRect();
-                    tooltip.style.left = `${rect.left}px`;
-                    tooltip.style.top = `${rect.top - 35}px`;
+            // Make email and LinkedIn buttons clickable
+            const emailBtn = document.querySelector('a[href^="mailto:"]');
+            const linkedinBtn = document.querySelector('a[href^="https://www.linkedin.com"]');
+
+            if (emailBtn) {
+                emailBtn.addEventListener('click', function(e) {
+                    // Optional: Add analytics tracking here
+                    console.log('Email button clicked');
                 });
-                
-                line.addEventListener('mouseleave', () => {
-                    tooltip.style.opacity = '0';
+            }
+
+            if (linkedinBtn) {
+                linkedinBtn.addEventListener('click', function(e) {
+                    // Optional: Add analytics tracking here
+                    console.log('LinkedIn button clicked');
                 });
-            });
-            
-            // Data panel animation
-            const dataPanel = document.getElementById('dataPanel');
-            const dataHighlight = document.getElementById('dataHighlight');
-            const progressFill = document.getElementById('progressFill');
-            const statusDetail = document.getElementById('statusDetail');
-            
-            // Simulate scraping process
-            setTimeout(() => {
-                statusDetail.textContent = "Connecting to target website...";
-            }, 1500);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Downloading page content...";
-                dataPanel.classList.add('active');
-                progressFill.style.width = '30%';
-            }, 3000);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Parsing HTML content...";
-                progressFill.style.width = '60%';
-            }, 4500);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Extracting data elements...";
-                progressFill.style.width = '90%';
-            }, 6000);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Data extraction complete!";
-                progressFill.style.width = '100%';
-            }, 7500);
+            }
         });
     </script>
     <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script>
-        // Previous JavaScript remains the same until the tooltip functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tooltip = document.getElementById('tooltip');
-            const codeLines = document.querySelectorAll('[data-tooltip]');
-            
-            codeLines.forEach(line => {
-                line.addEventListener('mouseenter', (e) => {
-                    const tooltipText = e.target.getAttribute('data-tooltip');
-                    tooltip.textContent = tooltipText;
-                    tooltip.style.opacity = '1';
-                    
-                    const rect = e.target.getBoundingClientRect();
-                    tooltip.style.left = `${rect.left}px`;
-                    tooltip.style.top = `${rect.top - 35}px`;
-                });
-                
-                line.addEventListener('mouseleave', () => {
-                    tooltip.style.opacity = '0';
-                });
-            });
-            
-            // Data panel animation
-            const dataPanel = document.getElementById('dataPanel');
-            const progressFill = document.getElementById('progressFill');
-            const statusDetail = document.getElementById('statusDetail');
-            
-            // Simulate scraping process
-            setTimeout(() => {
-                statusDetail.textContent = "Parsing login response...";
-            }, 1500);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Extracting token and client ID...";
-                dataPanel.classList.add('active');
-                progressFill.style.width = '30%';
-            }, 3000);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Preparing authenticated headers...";
-                progressFill.style.width = '60%';
-            }, 4500);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Making authenticated request...";
-                progressFill.style.width = '90%';
-            }, 6000);
-            
-            setTimeout(() => {
-                statusDetail.textContent = "Data extraction complete!";
-                progressFill.style.width = '100%';
-            }, 7500);
-        });
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
