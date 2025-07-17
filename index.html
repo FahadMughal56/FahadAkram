@@ -27,39 +27,7 @@
             background-clip: text;
             color: transparent;
         }
-        .scraping-animation {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            background-color: #1e293b;
-            color: #f8fafc;
-            padding: 1.5rem;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            overflow-x: auto;
-        }
-        .scraping-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-            z-index: 1;
-        }
-        .scraping-animation::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent, rgba(59, 130, 246, 0.2), transparent);
-            animation: scrape 3s linear infinite;
-            z-index: 2;
-        }
+        
         .profile-pic {
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -259,6 +227,126 @@
         .code-indent {
             margin-left: 1rem;
         }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+        
+        @keyframes float2 {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-2deg);
+            }
+        }
+        
+        @keyframes float3 {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(1deg);
+            }
+        }
+        
+        .card {
+            position: absolute;
+            will-change: transform;
+            transition: transform 0.2s ease-out;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+        
+        .card:hover {
+            transform: scale(1.05) !important;
+            z-index: 10 !important;
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-1 {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .card-2 {
+            animation: float2 7s ease-in-out infinite;
+        }
+        
+        .card-3 {
+            animation: float3 5s ease-in-out infinite;
+        }
+        
+        .card-4 {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .card-5 {
+            animation: float2 6.5s ease-in-out infinite;
+        }
+        
+        .card-6 {
+            animation: float3 7.5s ease-in-out infinite;
+        }
+        
+        .card-7 {
+            animation: float 5.5s ease-in-out infinite;
+        }
+        
+        .card-8 {
+            animation: float2 6s ease-in-out infinite;
+        }
+        
+        .card-9 {
+            animation: float3 7s ease-in-out infinite;
+        }
+        
+        .tech-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            background: transparent;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                height: 70vh;
+            }
+            
+            .card {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .tech-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .card-label {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -321,127 +409,158 @@
     </section>
 
              <!-- Enhanced Web Scraping Animation -->
-            <div class="mt-16 mx-auto max-w-2xl w-full">
-                <div class="scraping-animation">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <div class="terminal-dot bg-red-500"></div>
-                            <div class="terminal-dot bg-yellow-500"></div>
-                            <div class="terminal-dot bg-green-500"></div>
-                        </div>
-                        <div class="terminal-title">scraper.py</div>
-                    </div>
-
-                    <div class="code-content">
-                        <div class="code-line">
-                            <span class="code-keyword">import</span>
-                            <span class="code-variable"> requests</span>
-                            <span class="code-keyword ml-4">from</span>
-                            <span class="code-variable"> bs4</span>
-                            <span class="code-keyword"> import</span>
-                            <span class="code-variable"> BeautifulSoup</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Define target URL</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-variable">url</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-string">"https://example.com/products"</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Send HTTP request</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-variable">response</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">requests</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-function">get</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-variable">url</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Parse HTML content</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-variable">soup</span>
-                            <span class="code-operator"> = </span>
-                            <span class="code-variable">BeautifulSoup</span>
-                            <span class="code-operator">(</span>
-                            <span class="code-variable">response</span>
-                            <span class="code-operator">.</span>
-                            <span class="code-variable">text</span>
-                            <span class="code-operator">, </span>
-                            <span class="code-string">'html.parser'</span>
-                            <span class="code-operator">)</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-comment"># Extract product data</span>
-                        </div>
-                        <div class="data-highlight">
-                            <div class="code-line">
-                                <span class="code-variable">products</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-variable">soup</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">find_all</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'div'</span>
-                                <span class="code-operator">, </span>
-                                <span class="code-variable">class_</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-string">'product'</span>
-                                <span class="code-operator">)</span>
-                            </div>
-                        </div>
-                        <div class="code-line">
-                            <span class="code-keyword">for</span>
-                            <span class="code-variable"> product</span>
-                            <span class="code-keyword"> in</span>
-                            <span class="code-variable"> products</span>
-                            <span class="code-operator">:</span>
-                        </div>
-                        <div class="code-indent">
-                            <div class="code-line">
-                                <span class="code-variable">title</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-variable">product</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">find</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'h2'</span>
-                                <span class="code-operator">).</span>
-                                <span class="code-variable">text</span>
-                            </div>
-                            <div class="code-line">
-                                <span class="code-variable">price</span>
-                                <span class="code-operator"> = </span>
-                                <span class="code-variable">product</span>
-                                <span class="code-operator">.</span>
-                                <span class="code-function">find</span>
-                                <span class="code-operator">(</span>
-                                <span class="code-string">'span'</span>
-                                <span class="code-operator">, </span>
-                                <span class="code-variable">class_</span>
-                                <span class="code-operator">=</span>
-                                <span class="code-string">'price'</span>
-                                <span class="code-operator">).</span>
-                                <span class="code-variable">text</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-footer">
-                        <div>Status: <span class="text-green-400">Extracting data...</span></div>
-                        <div class="terminal-status">
-                            <div class="terminal-pulse"></div>
-                            <span>Active</span>
-                        </div>
+            <div class="bg-transparent"> 
+                <div class="container mx-auto px-4">
+                    <div class="container" id="floating-cards">
+                        <!-- Cards will be dynamically positioned here -->
                     </div>
                 </div>
-                <p class="mt-4 text-sm text-slate-500">Visualization of web scraping code extracting product data</p>
+            
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const container = document.getElementById('floating-cards');
+                        const cards = [
+                            {
+                                name: 'Python',
+                                icon: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
+                                class: 'card-1'
+                            },
+                            {
+                                name: 'Scrapy',
+                                icon: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Scrapy_logo.svg',
+                                class: 'card-2'
+                            },
+                            {
+                                name: 'BeautifulSoup',
+                                icon: 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/_images/6.1.jpg',
+                                class: 'card-3'
+                            },
+                            {
+                                name: 'Selenium',
+                                icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png',
+                                class: 'card-4'
+                            },
+                            {
+                                name: 'Playwright',
+                                icon: 'https://playwright.dev/img/playwright-logo.svg',
+                                class: 'card-5'
+                            },
+                            {
+                                name: 'reCAPTCHA',
+                                icon: 'https://upload.wikimedia.org/wikipedia/commons/3/32/RecaptchaLogo.svg',
+                                class: 'card-6'
+                            },
+                            {
+                                name: 'Django',
+                                icon: 'https://static.djangoproject.com/img/logos/django-logo-positive.svg',
+                                class: 'card-7'
+                            },
+                            {
+                                name: 'Django REST',
+                                icon: 'https://www.django-rest-framework.org/img/logo.png',
+                                class: 'card-8'
+                            },
+                            {
+                                name: 'Ollama',
+                                icon: 'https://ollama.ai/public/ollama.png',
+                                class: 'card-9'
+                            }
+                        ];
+            
+                        // Create and position cards
+                        cards.forEach((card, index) => {
+                            const cardElement = document.createElement('div');
+                            cardElement.className = `card ${card.class} w-24 h-24`;
+                            
+                            // Random initial position (within bounds)
+                            const left = Math.random() * 70 + 5; // 5-75%
+                            const top = Math.random() * 70 + 5; // 5-75%
+                            
+                            cardElement.style.left = `${left}%`;
+                            cardElement.style.top = `${top}%`;
+                            cardElement.style.zIndex = Math.floor(Math.random() * 5) + 1;
+                            
+                            cardElement.innerHTML = `
+                                <img src="${card.icon}" alt="${card.name}" class="tech-icon">
+                                <span class="card-label text-xs font-medium text-gray-700 text-center">${card.name}</span>
+                            `;
+                            
+                            container.appendChild(cardElement);
+                            
+                            // Make cards interactive
+                            cardElement.addEventListener('mousedown', startDrag);
+                            cardElement.addEventListener('touchstart', startDrag);
+                        });
+            
+                        // Drag functionality for desktop/mobile
+                        let isDragging = false;
+                        let currentCard = null;
+                        let offsetX, offsetY;
+            
+                        function startDrag(e) {
+                            isDragging = true;
+                            currentCard = e.target.closest('.card');
+                            
+                            const rect = currentCard.getBoundingClientRect();
+                            
+                            if (e.type === 'mousedown') {
+                                offsetX = e.clientX - rect.left;
+                                offsetY = e.clientY - rect.top;
+                            } else if (e.type === 'touchstart') {
+                                offsetX = e.touches[0].clientX - rect.left;
+                                offsetY = e.touches[0].clientY - rect.top;
+                            }
+                            
+                            currentCard.style.transition = 'none';
+                            currentCard.style.zIndex = '100';
+                            
+                            e.preventDefault();
+                        }
+            
+                        function drag(e) {
+                            if (!isDragging || !currentCard) return;
+                            
+                            let clientX, clientY;
+                            
+                            if (e.type === 'mousemove') {
+                                clientX = e.clientX;
+                                clientY = e.clientY;
+                            } else if (e.type === 'touchmove') {
+                                clientX = e.touches[0].clientX;
+                                clientY = e.touches[0].clientY;
+                            }
+                            
+                            const containerRect = container.getBoundingClientRect();
+                            const maxLeft = containerRect.width - currentCard.offsetWidth;
+                            const maxTop = containerRect.height - currentCard.offsetHeight;
+                            
+                            let left = clientX - containerRect.left - offsetX;
+                            let top = clientY - containerRect.top - offsetY;
+                            
+                            // Constrain to container
+                            left = Math.max(0, Math.min(left, maxLeft));
+                            top = Math.max(0, Math.min(top, maxTop));
+                            
+                            currentCard.style.left = `${(left / containerRect.width) * 100}%`;
+                            currentCard.style.top = `${(top / containerRect.height) * 100}%`;
+                        }
+            
+                        function endDrag() {
+                            if (!isDragging || !currentCard) return;
+                            
+                            currentCard.style.transition = 'transform 0.2s ease-out';
+                            currentCard.style.zIndex = '10';
+                            
+                            isDragging = false;
+                            currentCard = null;
+                        }
+            
+                        document.addEventListener('mousemove', drag);
+                        document.addEventListener('touchmove', drag);
+                        document.addEventListener('mouseup', endDrag);
+                        document.addEventListener('touchend', endDrag);
+                    });
+                </script>
             </div>
         </div>
     </section>
